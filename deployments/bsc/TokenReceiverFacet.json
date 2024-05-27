@@ -1,0 +1,239 @@
+{
+  "address": "0x3143E1C0Af0Cdc153423863923Cf4e3818e34Daa",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "onERC1155BatchReceived",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "onERC1155Received",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "onERC721Received",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "onTokenTransfer",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "tokensReceived",
+      "outputs": [],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x6668484184644c2a5f201d3e3c29339f13fb8d838944b12afd3378c6dfed9664",
+  "receipt": {
+    "to": "0x4e59b44847b379578588920cA78FbF26c0B4956C",
+    "from": "0xd87dF9Fd27B9a30fe27E7b294CaAa4673F34B6b1",
+    "contractAddress": null,
+    "transactionIndex": 6,
+    "gasUsed": "329340",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x4d5e42533d59d5368981521c5750a32c9df090bdecda933b05e2afd15f7e2b99",
+    "transactionHash": "0x6668484184644c2a5f201d3e3c29339f13fb8d838944b12afd3378c6dfed9664",
+    "logs": [],
+    "blockNumber": 32971451,
+    "cumulativeGasUsed": "1186729",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 3,
+  "solcInputHash": "0c861e53801b64e5ccc05669ea62a977",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC1155BatchReceived\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC1155Received\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC721Received\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onTokenTransfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"tokensReceived\",\"outputs\":[],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"David Yongjun Kim (@Powerstream3604)\",\"details\":\"Contract that enables receiving ERC721/ERC1155/ERC777/ERC677 Tokens with safe transfer\",\"kind\":\"dev\",\"methods\":{},\"title\":\"TokenReceiver Facet\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)\":{\"notice\":\"Handles ERC1155 Token batch callback. return Standardized onERC1155BatchReceived return value.\"},\"onERC1155Received(address,address,uint256,uint256,bytes)\":{\"notice\":\"Handles ERC1155 Token callback. return Standardized onERC1155Received return value.\"},\"onERC721Received(address,address,uint256,bytes)\":{\"notice\":\"Handles ERC721 Token callback.  return Standardized onERC721Received return value.\"},\"onTokenTransfer(address,uint256,bytes)\":{\"notice\":\"Handles ERC677 Token callback. return true.\"},\"tokensReceived(address,address,address,uint256,bytes,bytes)\":{\"notice\":\"Handles ERC777 Token callback. Does not return value, empty implementation.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/facets/TokenReceiverFacet.sol\":\"TokenReceiverFacet\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":999999},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.6.0) (token/ERC721/IERC721Receiver.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @title ERC721 token receiver interface\\n * @dev Interface for any contract that wants to support safeTransfers\\n * from ERC721 asset contracts.\\n */\\ninterface IERC721Receiver {\\n    /**\\n     * @dev Whenever an {IERC721} `tokenId` token is transferred to this contract via {IERC721-safeTransferFrom}\\n     * by `operator` from `from`, this function is called.\\n     *\\n     * It must return its Solidity selector to confirm the token transfer.\\n     * If any other value is returned or the interface is not implemented by the recipient, the transfer will be reverted.\\n     *\\n     * The selector can be obtained in Solidity with `IERC721Receiver.onERC721Received.selector`.\\n     */\\n    function onERC721Received(\\n        address operator,\\n        address from,\\n        uint256 tokenId,\\n        bytes calldata data\\n    ) external returns (bytes4);\\n}\\n\",\"keccak256\":\"0xa82b58eca1ee256be466e536706850163d2ec7821945abd6b4778cfb3bee37da\",\"license\":\"MIT\"},\"@openzeppelin/contracts/token/ERC777/IERC777Recipient.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts v4.4.1 (token/ERC777/IERC777Recipient.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Interface of the ERC777TokensRecipient standard as defined in the EIP.\\n *\\n * Accounts can be notified of {IERC777} tokens being sent to them by having a\\n * contract implement this interface (contract holders can be their own\\n * implementer) and registering it on the\\n * https://eips.ethereum.org/EIPS/eip-1820[ERC1820 global registry].\\n *\\n * See {IERC1820Registry} and {ERC1820Implementer}.\\n */\\ninterface IERC777Recipient {\\n    /**\\n     * @dev Called by an {IERC777} token contract whenever tokens are being\\n     * moved or created into a registered account (`to`). The type of operation\\n     * is conveyed by `from` being the zero address or not.\\n     *\\n     * This call occurs _after_ the token contract's state is updated, so\\n     * {IERC777-balanceOf}, etc., can be used to query the post-operation state.\\n     *\\n     * This function may revert to prevent the operation from being executed.\\n     */\\n    function tokensReceived(\\n        address operator,\\n        address from,\\n        address to,\\n        uint256 amount,\\n        bytes calldata userData,\\n        bytes calldata operatorData\\n    ) external;\\n}\\n\",\"keccak256\":\"0x1a5d61db2733202ba361e6d6741cd2e662380e22b80e987eacfc91973f2267dc\",\"license\":\"MIT\"},\"contracts/facets/TokenReceiverFacet.sol\":{\"content\":\"// SPDX-License-Identifier: Apache-2.0\\npragma solidity 0.8.21;\\n\\nimport {IERC721Receiver} from \\\"@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol\\\";\\nimport {IERC777Recipient} from \\\"@openzeppelin/contracts/token/ERC777/IERC777Recipient.sol\\\";\\nimport {IERC1155Receiver} from \\\"../interfaces/ERC/IERC1155Receiver.sol\\\";\\nimport {IERC677Receiver} from \\\"../interfaces/ERC/IERC677Receiver.sol\\\";\\n\\n/**\\n * @title TokenReceiver Facet\\n * @dev Contract that enables receiving ERC721/ERC1155/ERC777/ERC677 Tokens with safe transfer\\n * @author David Yongjun Kim (@Powerstream3604)\\n */\\ncontract TokenReceiverFacet is\\n    IERC721Receiver,\\n    IERC1155Receiver,\\n    IERC777Recipient,\\n    IERC677Receiver\\n{\\n    /**\\n     * @notice Handles ERC721 Token callback.\\n     *  return Standardized onERC721Received return value.\\n     */\\n    function onERC721Received(\\n        address,\\n        address,\\n        uint256,\\n        bytes calldata\\n    ) external pure override returns (bytes4) {\\n        return IERC721Receiver.onERC721Received.selector;\\n    }\\n\\n    /**\\n     * @notice Handles ERC1155 Token callback.\\n     * return Standardized onERC1155Received return value.\\n     */\\n    function onERC1155Received(\\n        address,\\n        address,\\n        uint256,\\n        uint256,\\n        bytes calldata\\n    ) external pure override returns (bytes4) {\\n        return IERC1155Receiver.onERC1155Received.selector;\\n    }\\n\\n    /**\\n     * @notice Handles ERC1155 Token batch callback.\\n     * return Standardized onERC1155BatchReceived return value.\\n     */\\n    function onERC1155BatchReceived(\\n        address,\\n        address,\\n        uint256[] calldata,\\n        uint256[] calldata,\\n        bytes calldata\\n    ) external pure override returns (bytes4) {\\n        return IERC1155Receiver.onERC1155BatchReceived.selector;\\n    }\\n\\n    /**\\n     * @notice Handles ERC777 Token callback.\\n     * Does not return value, empty implementation.\\n     */\\n    function tokensReceived(\\n        address,\\n        address,\\n        address,\\n        uint256,\\n        bytes calldata,\\n        bytes calldata\\n    ) external pure override {}\\n\\n    /**\\n     * @notice Handles ERC677 Token callback.\\n     * return true.\\n     */\\n    function onTokenTransfer(\\n        address,\\n        uint256,\\n        bytes calldata\\n    ) external pure override returns (bool) {\\n        return true;\\n    }\\n}\\n\",\"keccak256\":\"0xdfe483d05ef4056bb464c34ade19ab527687aff3ed0b6303b447a68b5ff7abb4\",\"license\":\"Apache-2.0\"},\"contracts/interfaces/ERC/IERC1155Receiver.sol\":{\"content\":\"// SPDX-License-Identifier: Apache-2.0\\n\\npragma solidity 0.8.21;\\n\\n/**\\n * @dev _Available since v3.1._\\n */\\ninterface IERC1155Receiver {\\n    /**\\n     * @dev Handles the receipt of a single ERC1155 token type. This function is\\n     * called at the end of a `safeTransferFrom` after the balance has been updated.\\n     *\\n     * NOTE: To accept the transfer, this must return\\n     * `bytes4(keccak256(\\\"onERC1155Received(address,address,uint256,uint256,bytes)\\\"))`\\n     * (i.e. 0xf23a6e61, or its own function selector).\\n     *\\n     * @param operator The address which initiated the transfer (i.e. msg.sender)\\n     * @param from The address which previously owned the token\\n     * @param id The ID of the token being transferred\\n     * @param value The amount of tokens being transferred\\n     * @param data Additional data with no specified format\\n     * @return `bytes4(keccak256(\\\"onERC1155Received(address,address,uint256,uint256,bytes)\\\"))` if transfer is allowed\\n     */\\n    function onERC1155Received(\\n        address operator,\\n        address from,\\n        uint256 id,\\n        uint256 value,\\n        bytes calldata data\\n    ) external returns (bytes4);\\n\\n    /**\\n     * @dev Handles the receipt of a multiple ERC1155 token types. This function\\n     * is called at the end of a `safeBatchTransferFrom` after the balances have\\n     * been updated.\\n     *\\n     * NOTE: To accept the transfer(s), this must return\\n     * `bytes4(keccak256(\\\"onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)\\\"))`\\n     * (i.e. 0xbc197c81, or its own function selector).\\n     *\\n     * @param operator The address which initiated the batch transfer (i.e. msg.sender)\\n     * @param from The address which previously owned the token\\n     * @param ids An array containing ids of each token being transferred (order and length must match values array)\\n     * @param values An array containing amounts of each token being transferred (order and length must match ids array)\\n     * @param data Additional data with no specified format\\n     * @return `bytes4(keccak256(\\\"onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)\\\"))` if transfer is allowed\\n     */\\n    function onERC1155BatchReceived(\\n        address operator,\\n        address from,\\n        uint256[] calldata ids,\\n        uint256[] calldata values,\\n        bytes calldata data\\n    ) external returns (bytes4);\\n}\\n\",\"keccak256\":\"0x3729c6757bae3aba03ac1c5064d67ad13b94e2a9428bf44b9be510373406da0c\",\"license\":\"Apache-2.0\"},\"contracts/interfaces/ERC/IERC677Receiver.sol\":{\"content\":\"// SPDX-License-Identifier: Apache-2.0\\npragma solidity 0.8.21;\\n\\ninterface IERC677Receiver {\\n    function onTokenTransfer(\\n        address sender,\\n        uint value,\\n        bytes calldata data\\n    ) external pure returns (bool);\\n}\\n\",\"keccak256\":\"0x4c1631cf45ea6daac0ec158c3edb9453099130b6b64f697004b83f95aa1f7350\",\"license\":\"Apache-2.0\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610502806100206000396000f3fe608060405234801561001057600080fd5b50600436106100665760003560e01c8063a4c0ed3611610050578063a4c0ed36146100f3578063bc197c811461011b578063f23a6e611461015657600080fd5b806223de291461006b578063150b7a0214610085575b600080fd5b610083610079366004610201565b5050505050505050565b005b6100bd6100933660046102ac565b7f150b7a020000000000000000000000000000000000000000000000000000000095945050505050565b6040517fffffffff0000000000000000000000000000000000000000000000000000000090911681526020015b60405180910390f35b61010b61010136600461031b565b6001949350505050565b60405190151581526020016100ea565b6100bd6101293660046103ba565b7fbc197c810000000000000000000000000000000000000000000000000000000098975050505050505050565b6100bd610164366004610454565b7ff23a6e61000000000000000000000000000000000000000000000000000000009695505050505050565b803573ffffffffffffffffffffffffffffffffffffffff811681146101b357600080fd5b919050565b60008083601f8401126101ca57600080fd5b50813567ffffffffffffffff8111156101e257600080fd5b6020830191508360208285010111156101fa57600080fd5b9250929050565b60008060008060008060008060c0898b03121561021d57600080fd5b6102268961018f565b975061023460208a0161018f565b965061024260408a0161018f565b955060608901359450608089013567ffffffffffffffff8082111561026657600080fd5b6102728c838d016101b8565b909650945060a08b013591508082111561028b57600080fd5b506102988b828c016101b8565b999c989b5096995094979396929594505050565b6000806000806000608086880312156102c457600080fd5b6102cd8661018f565b94506102db6020870161018f565b935060408601359250606086013567ffffffffffffffff8111156102fe57600080fd5b61030a888289016101b8565b969995985093965092949392505050565b6000806000806060858703121561033157600080fd5b61033a8561018f565b935060208501359250604085013567ffffffffffffffff81111561035d57600080fd5b610369878288016101b8565b95989497509550505050565b60008083601f84011261038757600080fd5b50813567ffffffffffffffff81111561039f57600080fd5b6020830191508360208260051b85010111156101fa57600080fd5b60008060008060008060008060a0898b0312156103d657600080fd5b6103df8961018f565b97506103ed60208a0161018f565b9650604089013567ffffffffffffffff8082111561040a57600080fd5b6104168c838d01610375565b909850965060608b013591508082111561042f57600080fd5b61043b8c838d01610375565b909650945060808b013591508082111561028b57600080fd5b60008060008060008060a0878903121561046d57600080fd5b6104768761018f565b95506104846020880161018f565b94506040870135935060608701359250608087013567ffffffffffffffff8111156104ae57600080fd5b6104ba89828a016101b8565b979a969950949750929593949250505056fea2646970667358221220ae9a97061ae9e1485161ca9c8d3228a23e47b18755fa935f51b40e927816ca2964736f6c63430008150033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100665760003560e01c8063a4c0ed3611610050578063a4c0ed36146100f3578063bc197c811461011b578063f23a6e611461015657600080fd5b806223de291461006b578063150b7a0214610085575b600080fd5b610083610079366004610201565b5050505050505050565b005b6100bd6100933660046102ac565b7f150b7a020000000000000000000000000000000000000000000000000000000095945050505050565b6040517fffffffff0000000000000000000000000000000000000000000000000000000090911681526020015b60405180910390f35b61010b61010136600461031b565b6001949350505050565b60405190151581526020016100ea565b6100bd6101293660046103ba565b7fbc197c810000000000000000000000000000000000000000000000000000000098975050505050505050565b6100bd610164366004610454565b7ff23a6e61000000000000000000000000000000000000000000000000000000009695505050505050565b803573ffffffffffffffffffffffffffffffffffffffff811681146101b357600080fd5b919050565b60008083601f8401126101ca57600080fd5b50813567ffffffffffffffff8111156101e257600080fd5b6020830191508360208285010111156101fa57600080fd5b9250929050565b60008060008060008060008060c0898b03121561021d57600080fd5b6102268961018f565b975061023460208a0161018f565b965061024260408a0161018f565b955060608901359450608089013567ffffffffffffffff8082111561026657600080fd5b6102728c838d016101b8565b909650945060a08b013591508082111561028b57600080fd5b506102988b828c016101b8565b999c989b5096995094979396929594505050565b6000806000806000608086880312156102c457600080fd5b6102cd8661018f565b94506102db6020870161018f565b935060408601359250606086013567ffffffffffffffff8111156102fe57600080fd5b61030a888289016101b8565b969995985093965092949392505050565b6000806000806060858703121561033157600080fd5b61033a8561018f565b935060208501359250604085013567ffffffffffffffff81111561035d57600080fd5b610369878288016101b8565b95989497509550505050565b60008083601f84011261038757600080fd5b50813567ffffffffffffffff81111561039f57600080fd5b6020830191508360208260051b85010111156101fa57600080fd5b60008060008060008060008060a0898b0312156103d657600080fd5b6103df8961018f565b97506103ed60208a0161018f565b9650604089013567ffffffffffffffff8082111561040a57600080fd5b6104168c838d01610375565b909850965060608b013591508082111561042f57600080fd5b61043b8c838d01610375565b909650945060808b013591508082111561028b57600080fd5b60008060008060008060a0878903121561046d57600080fd5b6104768761018f565b95506104846020880161018f565b94506040870135935060608701359250608087013567ffffffffffffffff8111156104ae57600080fd5b6104ba89828a016101b8565b979a969950949750929593949250505056fea2646970667358221220ae9a97061ae9e1485161ca9c8d3228a23e47b18755fa935f51b40e927816ca2964736f6c63430008150033",
+  "devdoc": {
+    "author": "David Yongjun Kim (@Powerstream3604)",
+    "details": "Contract that enables receiving ERC721/ERC1155/ERC777/ERC677 Tokens with safe transfer",
+    "kind": "dev",
+    "methods": {},
+    "title": "TokenReceiver Facet",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)": {
+        "notice": "Handles ERC1155 Token batch callback. return Standardized onERC1155BatchReceived return value."
+      },
+      "onERC1155Received(address,address,uint256,uint256,bytes)": {
+        "notice": "Handles ERC1155 Token callback. return Standardized onERC1155Received return value."
+      },
+      "onERC721Received(address,address,uint256,bytes)": {
+        "notice": "Handles ERC721 Token callback.  return Standardized onERC721Received return value."
+      },
+      "onTokenTransfer(address,uint256,bytes)": {
+        "notice": "Handles ERC677 Token callback. return true."
+      },
+      "tokensReceived(address,address,address,uint256,bytes,bytes)": {
+        "notice": "Handles ERC777 Token callback. Does not return value, empty implementation."
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}

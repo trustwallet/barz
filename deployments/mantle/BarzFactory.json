@@ -1,0 +1,302 @@
+{
+  "address": "0x729c310186a57833f622630a16d13f710b83272a",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_accountFacet",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_entryPoint",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_facetRegistry",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_defaultFallback",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "BarzDeployed",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "accountFacet",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_verificationFacet",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_owner",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_salt",
+          "type": "uint256"
+        }
+      ],
+      "name": "createAccount",
+      "outputs": [
+        {
+          "internalType": "contract Barz",
+          "name": "barz",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "defaultFallback",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "entryPoint",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "facetRegistry",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_verificationFacet",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_owner",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_salt",
+          "type": "uint256"
+        }
+      ],
+      "name": "getAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "barzAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_accountFacet",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_verificationFacet",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_entryPoint",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_facetRegistry",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_defaultFallback",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_ownerPublicKey",
+          "type": "bytes"
+        }
+      ],
+      "name": "getBytecode",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "barzBytecode",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getCreationCode",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "creationCode",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "args": [
+    "0xFde53272dcd7938d16E031A6989753c321728332",
+    "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789",
+    "0xAfCb70e6e9514E2A15B23A01d2a9b9f7A34f2c33",
+    "0x2e7f1dAe1F3799d20f5c31bEFdc7A620f664728D"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "ad34345aa73d96f52b3e14df983b6b29",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_accountFacet\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_entryPoint\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_facetRegistry\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_defaultFallback\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"BarzDeployed\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"accountFacet\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_verificationFacet\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"_owner\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"_salt\",\"type\":\"uint256\"}],\"name\":\"createAccount\",\"outputs\":[{\"internalType\":\"contract Barz\",\"name\":\"barz\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"defaultFallback\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"entryPoint\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"facetRegistry\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_verificationFacet\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"_owner\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"_salt\",\"type\":\"uint256\"}],\"name\":\"getAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"barzAddress\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_accountFacet\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_verificationFacet\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_entryPoint\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_facetRegistry\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_defaultFallback\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"_ownerPublicKey\",\"type\":\"bytes\"}],\"name\":\"getBytecode\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"barzBytecode\",\"type\":\"bytes\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCreationCode\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"creationCode\",\"type\":\"bytes\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"David Yongjun Kim (@Powerstream3604)\",\"details\":\"Contract to easily deploy Barz to a pre-computed address with a single call\",\"kind\":\"dev\",\"methods\":{\"constructor\":{\"params\":{\"_accountFacet\":\"Account Facet to be used to create Barz\",\"_defaultFallback\":\"Default Fallback Handler to be used to create Barz\",\"_entryPoint\":\"Entrypoint contract to be used to create Barz. This uses canonical EntryPoint deployed by EF\",\"_facetRegistry\":\"Facet Registry to be used to create Barz\"}},\"createAccount(address,bytes,uint256)\":{\"params\":{\"_owner\":\"Public Key of the owner to initialize barz account\",\"_salt\":\"Salt used for deploying barz with create2\",\"_verificationFacet\":\"Address of verification facet used for creating the barz account\"},\"returns\":{\"barz\":\"Instance of Barz contract deployed with the given parameters\"}},\"getAddress(address,bytes,uint256)\":{\"params\":{\"_owner\":\"Public Key of the owner to initialize barz account\",\"_salt\":\"Salt used for deploying barz with create2\",\"_verificationFacet\":\"Address of verification facet used for creating the barz account\"},\"returns\":{\"barzAddress\":\"Precalculated Barz address\"}},\"getBytecode(address,address,address,address,address,bytes)\":{\"params\":{\"_accountFacet\":\"Account Facet to be used to create Barz\",\"_defaultFallback\":\"Default Fallback Handler to be used to create Barz\",\"_entryPoint\":\"Entrypoint contract to be used to create Barz. This uses canonical EntryPoint deployed by EF\",\"_facetRegistry\":\"Facet Registry to be used to create Barz\",\"_ownerPublicKey\":\"Public Key of owner to be used to initialize Barz ownership\",\"_verificationFacet\":\"Verification Facet to be used to create Barz\"},\"returns\":{\"barzBytecode\":\"Bytecode of Barz\"}},\"getCreationCode()\":{\"returns\":{\"creationCode\":\"Creation code of Barz\"}}},\"title\":\"Barz Factory\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"constructor\":{\"notice\":\"Sets the initialization data for Barz contract initialization\"},\"createAccount(address,bytes,uint256)\":{\"notice\":\"Creates the Barz with a single call. It creates the Barz contract with the givent verification facet\"},\"getAddress(address,bytes,uint256)\":{\"notice\":\"Calculates the address of Barz with the given parameters\"},\"getBytecode(address,address,address,address,address,bytes)\":{\"notice\":\"Returns the bytecode of Barz with the given parameter\"},\"getCreationCode()\":{\"notice\":\"Returns the creation code of the Barz contract\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/BarzFactory.sol\":\"BarzFactory\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":999999},\"remappings\":[]},\"sources\":{\"contracts/Barz.sol\":{\"content\":\"// SPDX-License-Identifier: Apache-2.0\\npragma solidity 0.8.21;\\n\\nimport {LibDiamond} from \\\"./libraries/LibDiamond.sol\\\";\\nimport {IBarz} from \\\"./interfaces/IBarz.sol\\\";\\n\\n/**\\n * @title Barz\\n * @dev A diamond proxy wallet with a modular & upgradeable architecture\\n * @author David Yongjun Kim (@Powerstream3604)\\n */\\ncontract Barz is IBarz {\\n    /**\\n     * @notice Initializes Barz with the given parameters. Barz account is intended to be created from Barz Factory for stable deployment.\\n     * @dev This method makes a delegate call to account facet and account facet handles the initialization.\\n     *      With modular architecture, Barz encompasses wide spectrum of architecture and logic.\\n     *      The only requirement is account facet to comply with initialize() interface.\\n     *      Barz doesn't include built-in functions and is a full proxy, for maximum extensibility and modularity.\\n     * @param _accountFacet Address of Account Facet in charge of the Barz initialization\\n     * @param _verificationFacet Address of Verification Facet for verifying the signature. Could be any signature scheme\\n     * @param _entryPoint Address of Entry Point contract\\n     * @param _facetRegistry Address of Facet Registry. Facet Registry is a registry holding trusted facets that could be added to user's wallet\\n     * @param _defaultFallBack Address of Default FallBack Handler. Middleware contract for more efficient deployment\\n     * @param _ownerPublicKey Bytes of Owner Public Key using for initialization\\n     */\\n    constructor(\\n        address _accountFacet,\\n        address _verificationFacet,\\n        address _entryPoint,\\n        address _facetRegistry,\\n        address _defaultFallBack,\\n        bytes memory _ownerPublicKey\\n    ) payable {\\n        bytes memory initCall = abi.encodeWithSignature(\\n            \\\"initialize(address,address,address,address,bytes)\\\",\\n            _verificationFacet,\\n            _entryPoint,\\n            _facetRegistry,\\n            _defaultFallBack,\\n            _ownerPublicKey\\n        );\\n        (bool success, bytes memory result) = _accountFacet.delegatecall(\\n            initCall\\n        );\\n        if (!success || uint256(bytes32(result)) != 1) {\\n            revert Barz__InitializationFailure();\\n        }\\n    }\\n\\n    /**\\n     * @notice Fallback function for Barz complying with Diamond Standard with customization of adding Default Fallback Handler\\n     * @dev Find facet for function that is called and execute the function if a facet is found and return any value.\\n     */\\n    fallback() external payable {\\n        LibDiamond.DiamondStorage storage ds;\\n        bytes32 position = LibDiamond.DIAMOND_STORAGE_POSITION;\\n        // get diamond storage\\n        assembly {\\n            ds.slot := position\\n        }\\n        // get facet from function selector\\n        address facet = address(bytes20(ds.facets[msg.sig]));\\n        if (facet == address(0))\\n            facet = ds.defaultFallbackHandler.facetAddress(msg.sig);\\n        require(facet != address(0), \\\"Barz: Function does not exist\\\");\\n        // Execute external function from facet using delegatecall and return any value.\\n        assembly {\\n            // copy function selector and any arguments\\n            calldatacopy(0, 0, calldatasize())\\n            // execute function call using the facet\\n            let result := delegatecall(gas(), facet, 0, calldatasize(), 0, 0)\\n            // get any return value\\n            returndatacopy(0, 0, returndatasize())\\n            // return any return value or error back to the caller\\n            switch result\\n            case 0 {\\n                revert(0, returndatasize())\\n            }\\n            default {\\n                return(0, returndatasize())\\n            }\\n        }\\n    }\\n\\n    /**\\n     * @notice Receive function to receive native token without data\\n     */\\n    receive() external payable {}\\n}\\n\",\"keccak256\":\"0xd1c773409a4b3d1ca0316445d9ea1d686bab9cd5f6731fbdb0766a93edfd7bdb\",\"license\":\"Apache-2.0\"},\"contracts/BarzFactory.sol\":{\"content\":\"// SPDX-License-Identifier: Apache-2.0\\npragma solidity 0.8.21;\\n\\nimport {Barz} from \\\"./Barz.sol\\\";\\nimport {IBarzFactory} from \\\"./interfaces/IBarzFactory.sol\\\";\\n\\n/**\\n * @title Barz Factory\\n * @dev Contract to easily deploy Barz to a pre-computed address with a single call\\n * @author David Yongjun Kim (@Powerstream3604)\\n */\\ncontract BarzFactory is IBarzFactory {\\n    address public immutable accountFacet;\\n    address public immutable entryPoint;\\n    address public immutable facetRegistry;\\n    address public immutable defaultFallback;\\n\\n    /**\\n     * @notice Sets the initialization data for Barz contract initialization\\n     * @param _accountFacet Account Facet to be used to create Barz\\n     * @param _entryPoint Entrypoint contract to be used to create Barz. This uses canonical EntryPoint deployed by EF\\n     * @param _facetRegistry Facet Registry to be used to create Barz\\n     * @param _defaultFallback Default Fallback Handler to be used to create Barz\\n     */\\n    constructor(\\n        address _accountFacet,\\n        address _entryPoint,\\n        address _facetRegistry,\\n        address _defaultFallback\\n    ) {\\n        accountFacet = _accountFacet;\\n        entryPoint = _entryPoint;\\n        facetRegistry = _facetRegistry;\\n        defaultFallback = _defaultFallback;\\n    }\\n\\n    /**\\n     * @notice Creates the Barz with a single call. It creates the Barz contract with the givent verification facet\\n     * @param _verificationFacet Address of verification facet used for creating the barz account\\n     * @param _owner Public Key of the owner to initialize barz account\\n     * @param _salt Salt used for deploying barz with create2\\n     * @return barz Instance of Barz contract deployed with the given parameters\\n     */\\n    function createAccount(\\n        address _verificationFacet,\\n        bytes calldata _owner,\\n        uint256 _salt\\n    ) external override returns (Barz barz) {\\n        address addr = getAddress(_verificationFacet, _owner, _salt);\\n        uint codeSize = addr.code.length;\\n        if (codeSize > 0) {\\n            return Barz(payable(addr));\\n        }\\n        barz = new Barz{salt: bytes32(_salt)}(\\n            accountFacet,\\n            _verificationFacet,\\n            entryPoint,\\n            facetRegistry,\\n            defaultFallback,\\n            _owner\\n        );\\n        emit BarzDeployed(address(barz));\\n    }\\n\\n    /**\\n     * @notice Calculates the address of Barz with the given parameters\\n     * @param _verificationFacet Address of verification facet used for creating the barz account\\n     * @param _owner Public Key of the owner to initialize barz account\\n     * @param _salt Salt used for deploying barz with create2\\n     * @return barzAddress Precalculated Barz address\\n     */\\n    function getAddress(\\n        address _verificationFacet,\\n        bytes calldata _owner,\\n        uint256 _salt\\n    ) public view override returns (address barzAddress) {\\n        bytes memory bytecode = getBytecode(\\n            accountFacet,\\n            _verificationFacet,\\n            entryPoint,\\n            facetRegistry,\\n            defaultFallback,\\n            _owner\\n        );\\n        bytes32 hash = keccak256(\\n            abi.encodePacked(\\n                bytes1(0xff),\\n                address(this),\\n                _salt,\\n                keccak256(bytecode)\\n            )\\n        );\\n        barzAddress = address(uint160(uint256(hash)));\\n    }\\n\\n    /**\\n     * @notice Returns the bytecode of Barz with the given parameter\\n     * @param _accountFacet Account Facet to be used to create Barz\\n     * @param _verificationFacet Verification Facet to be used to create Barz\\n     * @param _entryPoint Entrypoint contract to be used to create Barz. This uses canonical EntryPoint deployed by EF\\n     * @param _facetRegistry Facet Registry to be used to create Barz\\n     * @param _defaultFallback Default Fallback Handler to be used to create Barz\\n     * @param _ownerPublicKey Public Key of owner to be used to initialize Barz ownership\\n     * @return barzBytecode Bytecode of Barz\\n     */\\n    function getBytecode(\\n        address _accountFacet,\\n        address _verificationFacet,\\n        address _entryPoint,\\n        address _facetRegistry,\\n        address _defaultFallback,\\n        bytes calldata _ownerPublicKey\\n    ) public pure override returns (bytes memory barzBytecode) {\\n        bytes memory bytecode = type(Barz).creationCode;\\n        barzBytecode = abi.encodePacked(\\n            bytecode,\\n            abi.encode(\\n                _accountFacet,\\n                _verificationFacet,\\n                _entryPoint,\\n                _facetRegistry,\\n                _defaultFallback,\\n                _ownerPublicKey\\n            )\\n        );\\n    }\\n\\n    /**\\n     * @notice Returns the creation code of the Barz contract\\n     * @return creationCode Creation code of Barz\\n     */\\n    function getCreationCode()\\n        public\\n        pure\\n        override\\n        returns (bytes memory creationCode)\\n    {\\n        creationCode = type(Barz).creationCode;\\n    }\\n}\\n\",\"keccak256\":\"0x76d6058fa4714f5ef87b876e49ce7e21f581164901eea906ec743e82362b1df6\",\"license\":\"Apache-2.0\"},\"contracts/facets/base/interfaces/IDiamondCut.sol\":{\"content\":\"// SPDX-License-Identifier: Apache-2.0\\npragma solidity 0.8.21;\\n\\n/**\\n * @title DiamondCut Facet Interface\\n * @dev Interface for DiamondCut Facet responsible for adding/removing/replace facets in Barz\\n * @author David Yongjun Kim (@Powerstream3604)\\n */\\ninterface IDiamondCut {\\n    error DiamondCutFacet__InvalidRouteWithGuardian();\\n    error DiamondCutFacet__InvalidRouteWithoutGuardian();\\n    error DiamondCutFacet__InvalidArrayLength();\\n    error DiamondCutFacet__InsufficientApprovers();\\n    error DiamondCutFacet__InvalidApprover();\\n    error DiamondCutFacet__InvalidApproverSignature();\\n    error DiamondCutFacet__InvalidApprovalValidationPeriod();\\n    error DiamondCutFacet__CannotRevokeUnapproved();\\n    error DiamondCutFacet__LackOfOwnerApproval();\\n    error DiamondCutFacet__OwnerAlreadyApproved();\\n    error DiamondCutFacet__DuplicateApproval();\\n    error DiamondCutFacet__InvalidInitAddress();\\n\\n    event DiamondCutApproved(FacetCut[] diamondCut);\\n    event DiamondCutApprovalRevoked(FacetCut[] diamondCut);\\n\\n    event SupportsInterfaceUpdated(bytes4 interfaceId, bool _lag);\\n\\n    enum FacetCutAction {\\n        Add,\\n        Replace,\\n        Remove\\n    }\\n    // Add=0, Replace=1, Remove=2\\n\\n    struct FacetCut {\\n        address facetAddress;\\n        FacetCutAction action;\\n        bytes4[] functionSelectors;\\n    }\\n\\n    /// @notice Add/replace/remove any number of functions and optionally execute\\n    ///         a function with delegatecall\\n    /// @param diamondCut Contains the facet addresses and function selectors\\n    /// @param init The address of the contract or facet to execute _calldata\\n    /// @param _calldata A function call, including function selector and arguments\\n    ///                  _calldata is executed with delegatecall on _init\\n    function diamondCut(\\n        FacetCut[] calldata diamondCut,\\n        address init,\\n        bytes calldata _calldata\\n    ) external;\\n\\n    function updateSupportsInterface(bytes4 interfaceId, bool flag) external;\\n\\n    function diamondCutWithGuardian(\\n        FacetCut[] calldata diamondCut,\\n        address[] calldata approvers,\\n        bytes[] calldata signatures\\n    ) external;\\n\\n    function approveDiamondCut(FacetCut[] calldata diamondCut) external;\\n\\n    function revokeDiamondCutApproval(FacetCut[] calldata diamondCut) external;\\n\\n    function getDiamondCutApprovalCountWithTimeValidity(\\n        bytes32 diamondCutHash\\n    ) external view returns (uint256);\\n\\n    function getOwnerCutApprovalWithTimeValidity(\\n        bytes32 diamondCutHash\\n    ) external view returns (bool);\\n\\n    function isCutApproved(\\n        bytes32 diamondCutHash,\\n        address approver\\n    ) external view returns (bool);\\n\\n    function getDiamondCutHash(\\n        FacetCut[] calldata diamondCut\\n    ) external view returns (bytes32);\\n\\n    function getDiamondCutNonce() external view returns (uint128);\\n}\\n\",\"keccak256\":\"0x8514213c7677c2122bda0721870b08decaddb68841cb1d6a87b89b04e8f43e1e\",\"license\":\"Apache-2.0\"},\"contracts/facets/base/interfaces/IDiamondLoupe.sol\":{\"content\":\"// SPDX-License-Identifier: Apache-2.0\\npragma solidity 0.8.21;\\n\\n// A loupe is a small magnifying glass used to look at diamonds.\\n// These functions look at diamonds\\ninterface IDiamondLoupe {\\n    /// These functions are expected to be called frequently\\n    /// by tools.\\n\\n    struct Facet {\\n        address facetAddress;\\n        bytes4[] functionSelectors;\\n    }\\n\\n    /// @notice Gets all facet addresses and their four byte function selectors.\\n    /// @return facets_ Facet\\n    function facets() external view returns (Facet[] memory facets_);\\n\\n    /// @notice Gets all the function selectors supported by a specific facet.\\n    /// @param _facet The facet address.\\n    /// @return facetFunctionSelectors_\\n    function facetFunctionSelectors(\\n        address _facet\\n    ) external view returns (bytes4[] memory facetFunctionSelectors_);\\n\\n    /// @notice Get all the facet addresses used by a diamond.\\n    /// @return facetAddresses_\\n    function facetAddresses()\\n        external\\n        view\\n        returns (address[] memory facetAddresses_);\\n\\n    /// @notice Gets the facet that supports the given selector.\\n    /// @dev If facet is not found return address(0).\\n    /// @param _functionSelector The function selector.\\n    /// @return facetAddress_ The facet address.\\n    function facetAddress(\\n        bytes4 _functionSelector\\n    ) external view returns (address facetAddress_);\\n}\\n\",\"keccak256\":\"0xd84f7fbb1344f714bceab2c71e4a25a235e3c1457fe7eba6c5538cd95ef5fc0f\",\"license\":\"Apache-2.0\"},\"contracts/interfaces/IBarz.sol\":{\"content\":\"// SPDX-License-Identifier: Apache-2.0\\npragma solidity 0.8.21;\\n\\n/**\\n * @title Barz Interface\\n * @dev Interface of Barz\\n * @author David Yongjun Kim (@Powerstream3604)\\n */\\ninterface IBarz {\\n    error Barz__InitializationFailure();\\n}\\n\",\"keccak256\":\"0xca9f0c2c1ad7d06088fa16ae92d587416f2d10d8f999d7afe8ca5c4d73410aba\",\"license\":\"Apache-2.0\"},\"contracts/interfaces/IBarzFactory.sol\":{\"content\":\"// SPDX-License-Identifier: Apache-2.0\\npragma solidity 0.8.21;\\n\\nimport {Barz} from \\\"../Barz.sol\\\";\\n\\n/**\\n * @title Barz Factory Interface\\n * @dev Interface of contract to easily deploy Barz to a pre-computed address with a single call\\n * @author David Yongjun Kim (@Powerstream3604)\\n */\\ninterface IBarzFactory {\\n    event BarzDeployed(address);\\n\\n    function createAccount(\\n        address verificationFacet,\\n        bytes calldata owner,\\n        uint256 salt\\n    ) external returns (Barz);\\n\\n    function getAddress(\\n        address verificationFacet,\\n        bytes calldata owner,\\n        uint256 salt\\n    ) external view returns (address);\\n\\n    function getBytecode(\\n        address accountFacet,\\n        address verificationFacet,\\n        address entryPoint,\\n        address facetRegistry,\\n        address defaultFallback,\\n        bytes memory ownerPublicKey\\n    ) external pure returns (bytes memory);\\n\\n    function getCreationCode() external pure returns (bytes memory);\\n}\\n\",\"keccak256\":\"0xadb48a6f3025f6395e26ffd5f9319da73ad2383906c8223e8455f41f420fba26\",\"license\":\"Apache-2.0\"},\"contracts/libraries/LibDiamond.sol\":{\"content\":\"// SPDX-License-Identifier: Apache-2.0\\npragma solidity 0.8.21;\\n\\nimport {IDiamondCut} from \\\"../facets/base/interfaces/IDiamondCut.sol\\\";\\nimport {IDiamondLoupe} from \\\"../facets/base/interfaces/IDiamondLoupe.sol\\\";\\n\\nerror InitializationFunctionReverted(\\n    address _initializationContractAddress,\\n    bytes _calldata\\n);\\n\\nlibrary LibDiamond {\\n    bytes32 constant DIAMOND_STORAGE_POSITION =\\n        keccak256(\\\"trustwallet.barz.diamond.storage\\\");\\n    bytes4 constant RESTRICTIONS_FACET_SELECTOR =\\n        bytes4(keccak256(\\\"verifyRestrictions(address,address,uint256,bytes)\\\"));\\n    struct DiamondStorage {\\n        // maps function selectors to the facets that execute the functions.\\n        // and maps the selectors to their position in the selectorSlots array.\\n        // func selector => address facet, selector position\\n        mapping(bytes4 => bytes32) facets;\\n        // array of slots of function selectors.\\n        // each slot holds 8 function selectors.\\n        mapping(uint256 => bytes32) selectorSlots;\\n        // The number of function selectors in selectorSlots\\n        uint16 selectorCount;\\n        // Used to query if a contract implements an interface.\\n        // Used to implement ERC-165.\\n        mapping(bytes4 => bool) supportedInterfaces;\\n        // Default Fallback Handler of the barz.\\n        IDiamondLoupe defaultFallbackHandler;\\n    }\\n\\n    function diamondStorage()\\n        internal\\n        pure\\n        returns (DiamondStorage storage ds)\\n    {\\n        bytes32 position = DIAMOND_STORAGE_POSITION;\\n        assembly {\\n            ds.slot := position\\n        }\\n    }\\n\\n    function enforceIsSelf() internal view {\\n        require(msg.sender == address(this), \\\"LibDiamond: Caller not self\\\");\\n    }\\n\\n    event DiamondCut(\\n        IDiamondCut.FacetCut[] _diamondCut,\\n        address _init,\\n        bytes _calldata\\n    );\\n\\n    bytes32 constant CLEAR_ADDRESS_MASK =\\n        bytes32(uint256(0xffffffffffffffffffffffff));\\n    bytes32 constant CLEAR_SELECTOR_MASK = bytes32(uint256(0xffffffff << 224));\\n\\n    // Internal function version of diamondCut\\n    // This code is almost the same as the external diamondCut,\\n    // except it is using 'Facet[] memory _diamondCut' instead of\\n    // 'Facet[] calldata _diamondCut'.\\n    // The code is duplicated to prevent copying calldata to memory which\\n    // causes an error for a two dimensional array.\\n    function diamondCut(\\n        IDiamondCut.FacetCut[] memory _diamondCut,\\n        address _init,\\n        bytes memory _calldata\\n    ) internal {\\n        DiamondStorage storage ds = diamondStorage();\\n        uint256 originalSelectorCount = ds.selectorCount;\\n        uint256 selectorCount = originalSelectorCount;\\n        bytes32 selectorSlot;\\n        // Check if last selector slot is not full\\n        // \\\"selectorCount & 7\\\" is a gas efficient modulo by eight \\\"selectorCount % 8\\\"\\n        if (selectorCount & 7 > 0) {\\n            // get last selectorSlot\\n            // \\\"selectorSlot >> 3\\\" is a gas efficient division by 8 \\\"selectorSlot / 8\\\"\\n            selectorSlot = ds.selectorSlots[selectorCount >> 3];\\n        }\\n        // loop through diamond cut\\n        for (uint256 facetIndex; facetIndex < _diamondCut.length; ) {\\n            (selectorCount, selectorSlot) = addReplaceRemoveFacetSelectors(\\n                selectorCount,\\n                selectorSlot,\\n                _diamondCut[facetIndex].facetAddress,\\n                _diamondCut[facetIndex].action,\\n                _diamondCut[facetIndex].functionSelectors\\n            );\\n\\n            unchecked {\\n                facetIndex++;\\n            }\\n        }\\n        if (selectorCount != originalSelectorCount) {\\n            ds.selectorCount = uint16(selectorCount);\\n        }\\n        // If last selector slot is not full\\n        // \\\"selectorCount & 7\\\" is a gas efficient modulo by eight \\\"selectorCount % 8\\\"\\n        if (selectorCount & 7 > 0) {\\n            // \\\"selectorSlot >> 3\\\" is a gas efficient division by 8 \\\"selectorSlot / 8\\\"\\n            ds.selectorSlots[selectorCount >> 3] = selectorSlot;\\n        }\\n        emit DiamondCut(_diamondCut, _init, _calldata);\\n        initializeDiamondCut(_init, _calldata);\\n    }\\n\\n    function addReplaceRemoveFacetSelectors(\\n        uint256 _selectorCount,\\n        bytes32 _selectorSlot,\\n        address _newFacetAddress,\\n        IDiamondCut.FacetCutAction _action,\\n        bytes4[] memory _selectors\\n    ) internal returns (uint256, bytes32) {\\n        DiamondStorage storage ds = diamondStorage();\\n        require(\\n            _selectors.length > 0,\\n            \\\"LibDiamondCut: No selectors in facet to cut\\\"\\n        );\\n        if (_action == IDiamondCut.FacetCutAction.Add) {\\n            enforceHasContractCode(\\n                _newFacetAddress,\\n                \\\"LibDiamondCut: Add facet has no code\\\"\\n            );\\n            for (uint256 selectorIndex; selectorIndex < _selectors.length; ) {\\n                bytes4 selector = _selectors[selectorIndex];\\n                bytes32 oldFacet = ds.facets[selector];\\n                require(\\n                    address(bytes20(oldFacet)) == address(0),\\n                    \\\"LibDiamondCut: Can't add function that already exists\\\"\\n                );\\n                // add facet for selector\\n                ds.facets[selector] =\\n                    bytes20(_newFacetAddress) |\\n                    bytes32(_selectorCount);\\n                // \\\"_selectorCount & 7\\\" is a gas efficient modulo by eight \\\"_selectorCount % 8\\\"\\n                // \\\" << 5 is the same as multiplying by 32 ( * 32)\\n                uint256 selectorInSlotPosition = (_selectorCount & 7) << 5;\\n                // clear selector position in slot and add selector\\n                _selectorSlot =\\n                    (_selectorSlot &\\n                        ~(CLEAR_SELECTOR_MASK >> selectorInSlotPosition)) |\\n                    (bytes32(selector) >> selectorInSlotPosition);\\n                // if slot is full then write it to storage\\n                if (selectorInSlotPosition == 224) {\\n                    // \\\"_selectorSlot >> 3\\\" is a gas efficient division by 8 \\\"_selectorSlot / 8\\\"\\n                    ds.selectorSlots[_selectorCount >> 3] = _selectorSlot;\\n                    _selectorSlot = 0;\\n                }\\n                _selectorCount++;\\n\\n                unchecked {\\n                    selectorIndex++;\\n                }\\n            }\\n        } else if (_action == IDiamondCut.FacetCutAction.Replace) {\\n            enforceHasContractCode(\\n                _newFacetAddress,\\n                \\\"LibDiamondCut: Replace facet has no code\\\"\\n            );\\n            for (uint256 selectorIndex; selectorIndex < _selectors.length; ) {\\n                bytes4 selector = _selectors[selectorIndex];\\n                bytes32 oldFacet = ds.facets[selector];\\n                address oldFacetAddress = address(bytes20(oldFacet));\\n                // only useful if immutable functions exist\\n                require(\\n                    oldFacetAddress != address(this),\\n                    \\\"LibDiamondCut: Can't replace immutable function\\\"\\n                );\\n                require(\\n                    oldFacetAddress != _newFacetAddress,\\n                    \\\"LibDiamondCut: Can't replace function with same function\\\"\\n                );\\n                require(\\n                    oldFacetAddress != address(0),\\n                    \\\"LibDiamondCut: Can't replace function that doesn't exist\\\"\\n                );\\n                // replace old facet address\\n                ds.facets[selector] =\\n                    (oldFacet & CLEAR_ADDRESS_MASK) |\\n                    bytes20(_newFacetAddress);\\n\\n                unchecked {\\n                    selectorIndex++;\\n                }\\n            }\\n        } else if (_action == IDiamondCut.FacetCutAction.Remove) {\\n            require(\\n                _newFacetAddress == address(0),\\n                \\\"LibDiamondCut: Remove facet address must be address(0)\\\"\\n            );\\n            // \\\"_selectorCount >> 3\\\" is a gas efficient division by 8 \\\"_selectorCount / 8\\\"\\n            uint256 selectorSlotCount = _selectorCount >> 3;\\n            // \\\"_selectorCount & 7\\\" is a gas efficient modulo by eight \\\"_selectorCount % 8\\\"\\n            uint256 selectorInSlotIndex = _selectorCount & 7;\\n            for (uint256 selectorIndex; selectorIndex < _selectors.length; ) {\\n                if (_selectorSlot == 0) {\\n                    // get last selectorSlot\\n                    selectorSlotCount--;\\n                    _selectorSlot = ds.selectorSlots[selectorSlotCount];\\n                    selectorInSlotIndex = 7;\\n                } else {\\n                    selectorInSlotIndex--;\\n                }\\n                bytes4 lastSelector;\\n                uint256 oldSelectorsSlotCount;\\n                uint256 oldSelectorInSlotPosition;\\n                // adding a block here prevents stack too deep error\\n                {\\n                    bytes4 selector = _selectors[selectorIndex];\\n                    bytes32 oldFacet = ds.facets[selector];\\n                    require(\\n                        address(bytes20(oldFacet)) != address(0),\\n                        \\\"LibDiamondCut: Can't remove function that doesn't exist\\\"\\n                    );\\n                    // only useful if immutable functions exist\\n                    require(\\n                        address(bytes20(oldFacet)) != address(this),\\n                        \\\"LibDiamondCut: Can't remove immutable function\\\"\\n                    );\\n                    // replace selector with last selector in ds.facets\\n                    // gets the last selector\\n                    // \\\" << 5 is the same as multiplying by 32 ( * 32)\\n                    lastSelector = bytes4(\\n                        _selectorSlot << (selectorInSlotIndex << 5)\\n                    );\\n                    if (lastSelector != selector) {\\n                        // update last selector slot position info\\n                        ds.facets[lastSelector] =\\n                            (oldFacet & CLEAR_ADDRESS_MASK) |\\n                            bytes20(ds.facets[lastSelector]);\\n                    }\\n                    delete ds.facets[selector];\\n                    uint256 oldSelectorCount = uint16(uint256(oldFacet));\\n                    // \\\"oldSelectorCount >> 3\\\" is a gas efficient division by 8 \\\"oldSelectorCount / 8\\\"\\n                    oldSelectorsSlotCount = oldSelectorCount >> 3;\\n                    // \\\"oldSelectorCount & 7\\\" is a gas efficient modulo by eight \\\"oldSelectorCount % 8\\\"\\n                    // \\\" << 5 is the same as multiplying by 32 ( * 32)\\n                    oldSelectorInSlotPosition = (oldSelectorCount & 7) << 5;\\n                }\\n                if (oldSelectorsSlotCount != selectorSlotCount) {\\n                    bytes32 oldSelectorSlot = ds.selectorSlots[\\n                        oldSelectorsSlotCount\\n                    ];\\n                    // clears the selector we are deleting and puts the last selector in its place.\\n                    oldSelectorSlot =\\n                        (oldSelectorSlot &\\n                            ~(CLEAR_SELECTOR_MASK >>\\n                                oldSelectorInSlotPosition)) |\\n                        (bytes32(lastSelector) >> oldSelectorInSlotPosition);\\n                    // update storage with the modified slot\\n                    ds.selectorSlots[oldSelectorsSlotCount] = oldSelectorSlot;\\n                } else {\\n                    // clears the selector we are deleting and puts the last selector in its place.\\n                    _selectorSlot =\\n                        (_selectorSlot &\\n                            ~(CLEAR_SELECTOR_MASK >>\\n                                oldSelectorInSlotPosition)) |\\n                        (bytes32(lastSelector) >> oldSelectorInSlotPosition);\\n                }\\n                if (selectorInSlotIndex == 0) {\\n                    delete ds.selectorSlots[selectorSlotCount];\\n                    _selectorSlot = 0;\\n                }\\n\\n                unchecked {\\n                    selectorIndex++;\\n                }\\n            }\\n            _selectorCount = selectorSlotCount * 8 + selectorInSlotIndex;\\n        } else {\\n            revert(\\\"LibDiamondCut: Incorrect FacetCutAction\\\");\\n        }\\n        return (_selectorCount, _selectorSlot);\\n    }\\n\\n    function initializeDiamondCut(\\n        address _init,\\n        bytes memory _calldata\\n    ) internal {\\n        if (_init == address(0)) {\\n            return;\\n        }\\n        enforceHasContractCode(\\n            _init,\\n            \\\"LibDiamondCut: _init address has no code\\\"\\n        );\\n        (bool success, bytes memory error) = _init.delegatecall(_calldata);\\n        if (!success) {\\n            if (error.length > 0) {\\n                // bubble up error\\n                /// @solidity memory-safe-assembly\\n                assembly {\\n                    let returndata_size := mload(error)\\n                    revert(add(32, error), returndata_size)\\n                }\\n            } else {\\n                revert InitializationFunctionReverted(_init, _calldata);\\n            }\\n        }\\n    }\\n\\n    function enforceHasContractCode(\\n        address _contract,\\n        string memory _errorMessage\\n    ) internal view {\\n        uint256 contractSize;\\n        assembly {\\n            contractSize := extcodesize(_contract)\\n        }\\n        require(contractSize > 0, _errorMessage);\\n    }\\n\\n    function restrictionsFacet() internal view returns (address facetAddress_) {\\n        facetAddress_ = address(\\n            bytes20(\\n                LibDiamond.diamondStorage().facets[RESTRICTIONS_FACET_SELECTOR]\\n            )\\n        );\\n    }\\n}\\n\",\"keccak256\":\"0x2cabdc00de859c3a3170ce3bda5d0e5fd3933d47ce904fd1585f9818b02572f8\",\"license\":\"Apache-2.0\"}},\"version\":1}",
+  "bytecode": "0x61010060405234801561001157600080fd5b50604051610eba380380610eba8339810160408190526100309161006e565b6001600160a01b0393841660805291831660a052821660c0521660e0526100c2565b80516001600160a01b038116811461006957600080fd5b919050565b6000806000806080858703121561008457600080fd5b61008d85610052565b935061009b60208601610052565b92506100a960408601610052565b91506100b760608601610052565b905092959194509250565b60805160a05160c05160e051610d886101326000396000818161013b015281816102b3015261048101526000818160bf01528181610292015261046001526000818161016301528181610271015261043f01526000818161018b0152818161024f015261041d0152610d886000f3fe60806040523480156200001157600080fd5b5060043610620000925760003560e01c806344409a82116200006257806344409a821462000135578063b0d691fe146200015d578063b0f5d4641462000185578063c8a7adf514620001ad57600080fd5b8062c194db14620000975780630a1acd7314620000b9578063296601cd146200010757806333bb64a7146200011e575b600080fd5b620000a1620001c4565b604051620000b091906200056c565b60405180910390f35b620000e17f000000000000000000000000000000000000000000000000000000000000000081565b60405173ffffffffffffffffffffffffffffffffffffffff9091168152602001620000b0565b620000e16200011836600462000635565b6200020e565b620000a16200012f36600462000695565b6200036d565b620000e17f000000000000000000000000000000000000000000000000000000000000000081565b620000e17f000000000000000000000000000000000000000000000000000000000000000081565b620000e17f000000000000000000000000000000000000000000000000000000000000000081565b620000e1620001be36600462000635565b62000414565b606060405180602001620001d89062000538565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe082820381018352601f90910116604052919050565b6000806200021f8686868662000414565b905073ffffffffffffffffffffffffffffffffffffffff81163b8015620002495750905062000365565b8360001b7f0000000000000000000000000000000000000000000000000000000000000000887f00000000000000000000000000000000000000000000000000000000000000007f00000000000000000000000000000000000000000000000000000000000000007f00000000000000000000000000000000000000000000000000000000000000008b8b604051620002e29062000538565b620002f497969594939291906200073a565b8190604051809103906000f590508015801562000315573d6000803e3d6000fd5b5060405173ffffffffffffffffffffffffffffffffffffffff821681529093507f9e6e326008e68f57877e2bae766a5745c162e42359e34834a7f0661fa82d31b19060200160405180910390a150505b949350505050565b6060600060405180602001620003839062000538565b6020820181038252601f19601f8201166040525090508089898989898989604051602001620003b997969594939291906200073a565b604080517fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe081840301815290829052620003f79291602001620007cd565b604051602081830303815290604052915050979650505050505050565b600080620004a87f0000000000000000000000000000000000000000000000000000000000000000877f00000000000000000000000000000000000000000000000000000000000000007f00000000000000000000000000000000000000000000000000000000000000007f00000000000000000000000000000000000000000000000000000000000000008a8a6200036d565b8051602091820120604080517fff00000000000000000000000000000000000000000000000000000000000000818501523060601b7fffffffffffffffffffffffffffffffffffffffff0000000000000000000000001660218201526035810196909652605580870192909252805180870390920182526075909501909452835193019290922095945050505050565b610552806200080183390190565b60005b838110156200056357818101518382015260200162000549565b50506000910152565b60208152600082518060208401526200058d81604085016020870162000546565b601f017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0169190910160400192915050565b803573ffffffffffffffffffffffffffffffffffffffff81168114620005e457600080fd5b919050565b60008083601f840112620005fc57600080fd5b50813567ffffffffffffffff8111156200061557600080fd5b6020830191508360208285010111156200062e57600080fd5b9250929050565b600080600080606085870312156200064c57600080fd5b6200065785620005bf565b9350602085013567ffffffffffffffff8111156200067457600080fd5b6200068287828801620005e9565b9598909750949560400135949350505050565b600080600080600080600060c0888a031215620006b157600080fd5b620006bc88620005bf565b9650620006cc60208901620005bf565b9550620006dc60408901620005bf565b9450620006ec60608901620005bf565b9350620006fc60808901620005bf565b925060a088013567ffffffffffffffff8111156200071957600080fd5b620007278a828b01620005e9565b989b979a50959850939692959293505050565b600073ffffffffffffffffffffffffffffffffffffffff808a16835280891660208401528088166040840152808716606084015280861660808401525060c060a08301528260c0830152828460e0840137600060e0848401015260e07fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0601f850116830101905098975050505050505050565b60008351620007e181846020880162000546565b835190830190620007f781836020880162000546565b0194935050505056fe608060405260405161055238038061055283398101604081905261002291610163565b6000858585858560405160240161003d959493929190610264565b60408051601f198184030181529181526020820180516001600160e01b0316634a93641760e01b1790525190915060009081906001600160a01b038a16906100869085906102c3565b600060405180830381855af49150503d80600081146100c1576040519150601f19603f3d011682016040523d82523d6000602084013e6100c6565b606091505b50915091508115806100e157506100dc816102df565b600114155b156100ff57604051636ff35f8960e01b815260040160405180910390fd5b505050505050505050610306565b80516001600160a01b038116811461012457600080fd5b919050565b634e487b7160e01b600052604160045260246000fd5b60005b8381101561015a578181015183820152602001610142565b50506000910152565b60008060008060008060c0878903121561017c57600080fd5b6101858761010d565b95506101936020880161010d565b94506101a16040880161010d565b93506101af6060880161010d565b92506101bd6080880161010d565b60a08801519092506001600160401b03808211156101da57600080fd5b818901915089601f8301126101ee57600080fd5b81518181111561020057610200610129565b604051601f8201601f19908116603f0116810190838211818310171561022857610228610129565b816040528281528c602084870101111561024157600080fd5b61025283602083016020880161013f565b80955050505050509295509295509295565b600060018060a01b0380881683528087166020840152808616604084015280851660608401525060a0608083015282518060a08401526102ab8160c085016020870161013f565b601f01601f19169190910160c0019695505050505050565b600082516102d581846020870161013f565b9190910192915050565b80516020808301519190811015610300576000198160200360031b1b821691505b50919050565b61023d806103156000396000f3fe60806040523661000b57005b600080357fffffffff000000000000000000000000000000000000000000000000000000001681527f183cde5d4f6bb7b445b8fc2f7f15d0fd1d162275aded24183babbffee7cd491f6020819052604090912054819060601c80610125576004838101546040517fcdffacc60000000000000000000000000000000000000000000000000000000081526000357fffffffff00000000000000000000000000000000000000000000000000000000169281019290925273ffffffffffffffffffffffffffffffffffffffff169063cdffacc690602401602060405180830381865afa1580156100fe573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061012291906101ca565b90505b73ffffffffffffffffffffffffffffffffffffffff81166101a6576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601d60248201527f4261727a3a2046756e6374696f6e20646f6573206e6f74206578697374000000604482015260640160405180910390fd5b3660008037600080366000845af43d6000803e8080156101c5573d6000f35b3d6000fd5b6000602082840312156101dc57600080fd5b815173ffffffffffffffffffffffffffffffffffffffff8116811461020057600080fd5b939250505056fea26469706673582212200f3fa76ace3be8675d8b4c0d6c210a922fff2c2f1444023b817d1f6c908cd56a64736f6c63430008150033a2646970667358221220329ad45a4ef4915180001cb1fc90a5f97ad94a0b280426a580cba65fce28c0f164736f6c63430008150033",
+  "deployedBytecode": "0x60806040523480156200001157600080fd5b5060043610620000925760003560e01c806344409a82116200006257806344409a821462000135578063b0d691fe146200015d578063b0f5d4641462000185578063c8a7adf514620001ad57600080fd5b8062c194db14620000975780630a1acd7314620000b9578063296601cd146200010757806333bb64a7146200011e575b600080fd5b620000a1620001c4565b604051620000b091906200056c565b60405180910390f35b620000e17f000000000000000000000000000000000000000000000000000000000000000081565b60405173ffffffffffffffffffffffffffffffffffffffff9091168152602001620000b0565b620000e16200011836600462000635565b6200020e565b620000a16200012f36600462000695565b6200036d565b620000e17f000000000000000000000000000000000000000000000000000000000000000081565b620000e17f000000000000000000000000000000000000000000000000000000000000000081565b620000e17f000000000000000000000000000000000000000000000000000000000000000081565b620000e1620001be36600462000635565b62000414565b606060405180602001620001d89062000538565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe082820381018352601f90910116604052919050565b6000806200021f8686868662000414565b905073ffffffffffffffffffffffffffffffffffffffff81163b8015620002495750905062000365565b8360001b7f0000000000000000000000000000000000000000000000000000000000000000887f00000000000000000000000000000000000000000000000000000000000000007f00000000000000000000000000000000000000000000000000000000000000007f00000000000000000000000000000000000000000000000000000000000000008b8b604051620002e29062000538565b620002f497969594939291906200073a565b8190604051809103906000f590508015801562000315573d6000803e3d6000fd5b5060405173ffffffffffffffffffffffffffffffffffffffff821681529093507f9e6e326008e68f57877e2bae766a5745c162e42359e34834a7f0661fa82d31b19060200160405180910390a150505b949350505050565b6060600060405180602001620003839062000538565b6020820181038252601f19601f8201166040525090508089898989898989604051602001620003b997969594939291906200073a565b604080517fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe081840301815290829052620003f79291602001620007cd565b604051602081830303815290604052915050979650505050505050565b600080620004a87f0000000000000000000000000000000000000000000000000000000000000000877f00000000000000000000000000000000000000000000000000000000000000007f00000000000000000000000000000000000000000000000000000000000000007f00000000000000000000000000000000000000000000000000000000000000008a8a6200036d565b8051602091820120604080517fff00000000000000000000000000000000000000000000000000000000000000818501523060601b7fffffffffffffffffffffffffffffffffffffffff0000000000000000000000001660218201526035810196909652605580870192909252805180870390920182526075909501909452835193019290922095945050505050565b610552806200080183390190565b60005b838110156200056357818101518382015260200162000549565b50506000910152565b60208152600082518060208401526200058d81604085016020870162000546565b601f017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0169190910160400192915050565b803573ffffffffffffffffffffffffffffffffffffffff81168114620005e457600080fd5b919050565b60008083601f840112620005fc57600080fd5b50813567ffffffffffffffff8111156200061557600080fd5b6020830191508360208285010111156200062e57600080fd5b9250929050565b600080600080606085870312156200064c57600080fd5b6200065785620005bf565b9350602085013567ffffffffffffffff8111156200067457600080fd5b6200068287828801620005e9565b9598909750949560400135949350505050565b600080600080600080600060c0888a031215620006b157600080fd5b620006bc88620005bf565b9650620006cc60208901620005bf565b9550620006dc60408901620005bf565b9450620006ec60608901620005bf565b9350620006fc60808901620005bf565b925060a088013567ffffffffffffffff8111156200071957600080fd5b620007278a828b01620005e9565b989b979a50959850939692959293505050565b600073ffffffffffffffffffffffffffffffffffffffff808a16835280891660208401528088166040840152808716606084015280861660808401525060c060a08301528260c0830152828460e0840137600060e0848401015260e07fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0601f850116830101905098975050505050505050565b60008351620007e181846020880162000546565b835190830190620007f781836020880162000546565b0194935050505056fe608060405260405161055238038061055283398101604081905261002291610163565b6000858585858560405160240161003d959493929190610264565b60408051601f198184030181529181526020820180516001600160e01b0316634a93641760e01b1790525190915060009081906001600160a01b038a16906100869085906102c3565b600060405180830381855af49150503d80600081146100c1576040519150601f19603f3d011682016040523d82523d6000602084013e6100c6565b606091505b50915091508115806100e157506100dc816102df565b600114155b156100ff57604051636ff35f8960e01b815260040160405180910390fd5b505050505050505050610306565b80516001600160a01b038116811461012457600080fd5b919050565b634e487b7160e01b600052604160045260246000fd5b60005b8381101561015a578181015183820152602001610142565b50506000910152565b60008060008060008060c0878903121561017c57600080fd5b6101858761010d565b95506101936020880161010d565b94506101a16040880161010d565b93506101af6060880161010d565b92506101bd6080880161010d565b60a08801519092506001600160401b03808211156101da57600080fd5b818901915089601f8301126101ee57600080fd5b81518181111561020057610200610129565b604051601f8201601f19908116603f0116810190838211818310171561022857610228610129565b816040528281528c602084870101111561024157600080fd5b61025283602083016020880161013f565b80955050505050509295509295509295565b600060018060a01b0380881683528087166020840152808616604084015280851660608401525060a0608083015282518060a08401526102ab8160c085016020870161013f565b601f01601f19169190910160c0019695505050505050565b600082516102d581846020870161013f565b9190910192915050565b80516020808301519190811015610300576000198160200360031b1b821691505b50919050565b61023d806103156000396000f3fe60806040523661000b57005b600080357fffffffff000000000000000000000000000000000000000000000000000000001681527f183cde5d4f6bb7b445b8fc2f7f15d0fd1d162275aded24183babbffee7cd491f6020819052604090912054819060601c80610125576004838101546040517fcdffacc60000000000000000000000000000000000000000000000000000000081526000357fffffffff00000000000000000000000000000000000000000000000000000000169281019290925273ffffffffffffffffffffffffffffffffffffffff169063cdffacc690602401602060405180830381865afa1580156100fe573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061012291906101ca565b90505b73ffffffffffffffffffffffffffffffffffffffff81166101a6576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601d60248201527f4261727a3a2046756e6374696f6e20646f6573206e6f74206578697374000000604482015260640160405180910390fd5b3660008037600080366000845af43d6000803e8080156101c5573d6000f35b3d6000fd5b6000602082840312156101dc57600080fd5b815173ffffffffffffffffffffffffffffffffffffffff8116811461020057600080fd5b939250505056fea26469706673582212200f3fa76ace3be8675d8b4c0d6c210a922fff2c2f1444023b817d1f6c908cd56a64736f6c63430008150033a2646970667358221220329ad45a4ef4915180001cb1fc90a5f97ad94a0b280426a580cba65fce28c0f164736f6c63430008150033",
+  "devdoc": {
+    "author": "David Yongjun Kim (@Powerstream3604)",
+    "details": "Contract to easily deploy Barz to a pre-computed address with a single call",
+    "kind": "dev",
+    "methods": {
+      "constructor": {
+        "params": {
+          "_accountFacet": "Account Facet to be used to create Barz",
+          "_defaultFallback": "Default Fallback Handler to be used to create Barz",
+          "_entryPoint": "Entrypoint contract to be used to create Barz. This uses canonical EntryPoint deployed by EF",
+          "_facetRegistry": "Facet Registry to be used to create Barz"
+        }
+      },
+      "createAccount(address,bytes,uint256)": {
+        "params": {
+          "_owner": "Public Key of the owner to initialize barz account",
+          "_salt": "Salt used for deploying barz with create2",
+          "_verificationFacet": "Address of verification facet used for creating the barz account"
+        },
+        "returns": {
+          "barz": "Instance of Barz contract deployed with the given parameters"
+        }
+      },
+      "getAddress(address,bytes,uint256)": {
+        "params": {
+          "_owner": "Public Key of the owner to initialize barz account",
+          "_salt": "Salt used for deploying barz with create2",
+          "_verificationFacet": "Address of verification facet used for creating the barz account"
+        },
+        "returns": {
+          "barzAddress": "Precalculated Barz address"
+        }
+      },
+      "getBytecode(address,address,address,address,address,bytes)": {
+        "params": {
+          "_accountFacet": "Account Facet to be used to create Barz",
+          "_defaultFallback": "Default Fallback Handler to be used to create Barz",
+          "_entryPoint": "Entrypoint contract to be used to create Barz. This uses canonical EntryPoint deployed by EF",
+          "_facetRegistry": "Facet Registry to be used to create Barz",
+          "_ownerPublicKey": "Public Key of owner to be used to initialize Barz ownership",
+          "_verificationFacet": "Verification Facet to be used to create Barz"
+        },
+        "returns": {
+          "barzBytecode": "Bytecode of Barz"
+        }
+      },
+      "getCreationCode()": {
+        "returns": {
+          "creationCode": "Creation code of Barz"
+        }
+      }
+    },
+    "title": "Barz Factory",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "constructor": {
+        "notice": "Sets the initialization data for Barz contract initialization"
+      },
+      "createAccount(address,bytes,uint256)": {
+        "notice": "Creates the Barz with a single call. It creates the Barz contract with the givent verification facet"
+      },
+      "getAddress(address,bytes,uint256)": {
+        "notice": "Calculates the address of Barz with the given parameters"
+      },
+      "getBytecode(address,address,address,address,address,bytes)": {
+        "notice": "Returns the bytecode of Barz with the given parameter"
+      },
+      "getCreationCode()": {
+        "notice": "Returns the creation code of the Barz contract"
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}
