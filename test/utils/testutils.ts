@@ -158,6 +158,29 @@ export async function getMessageHash(message: any, chainId: any, contractAddress
     return ethers.utils.keccak256(encodedMessageData);
 }
 
+export function generateExampleMsgHash() {
+    const enc = ethers.utils.defaultAbiCoder.encode(['string'], ["LOGIN to TW Wallet Timestamp:1683119999"])
+    return ethers.utils.keccak256(enc)
+}
+
+export function sortSignatures(mapping: any): string {
+    let signatures = ""
+    Object.keys(mapping)
+    .sort((a, b) => a.localeCompare(b))
+    .forEach(key => {
+        signatures += mapping[key]
+    });
+    return "0x" + signatures.replace("undefined", "")
+}
+
+export function removePrefix(bytes: string): string {
+    return bytes.replace("0x", "")
+}
+
+export function addPrefix(bytes: string): string {
+    return "0x" + bytes
+}
+
 export const EIP712_BARZ_MESSAGE_TYPE = {
     // "BarzMessage(bytes message)"
     BarzMessage: [{ type: "bytes", name: "message" }],
