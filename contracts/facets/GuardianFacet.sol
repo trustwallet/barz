@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
-pragma solidity 0.8.21;
+pragma solidity 0.8.26;
 
 import {LibDiamond} from "../libraries/LibDiamond.sol";
 import {LibFacetStorage, GuardianStorage, StorageConfig} from "../libraries/LibFacetStorage.sol";
+import {LibFacetGuard} from "../libraries/LibFacetGuard.sol";
 import {LibGuardian} from "../libraries/LibGuardian.sol";
 import {ISecurityManager} from "../infrastructure/interfaces/ISecurityManager.sol";
 import {IGuardianFacet} from "./interfaces/IGuardianFacet.sol";
@@ -34,6 +35,8 @@ contract GuardianFacet is IGuardianFacet {
      */
     function addGuardians(address[] calldata _guardians) external override {
         LibDiamond.enforceIsSelf();
+        LibFacetGuard.enforceFacetValidation();
+
         for (uint256 i; i < _guardians.length; ) {
             addGuardian(_guardians[i]);
             unchecked {
@@ -50,6 +53,8 @@ contract GuardianFacet is IGuardianFacet {
      */
     function addGuardian(address _guardian) public override {
         LibDiamond.enforceIsSelf();
+        LibFacetGuard.enforceFacetValidation();
+
         GuardianStorage storage gs = LibFacetStorage.guardianStorage();
         if (_guardian == address(this)) {
             revert GuardianFacet__GuardianCannotBeSelf();
@@ -91,6 +96,8 @@ contract GuardianFacet is IGuardianFacet {
      */
     function removeGuardians(address[] calldata _guardians) external override {
         LibDiamond.enforceIsSelf();
+        LibFacetGuard.enforceFacetValidation();
+
         for (uint256 i; i < _guardians.length; ) {
             removeGuardian(_guardians[i]);
             unchecked {
@@ -107,9 +114,9 @@ contract GuardianFacet is IGuardianFacet {
      */
     function removeGuardian(address _guardian) public override {
         LibDiamond.enforceIsSelf();
-        if (!isGuardian(_guardian)) {
-            revert GuardianFacet__NonExistentGuardian();
-        }
+        LibFacetGuard.enforceFacetValidation();
+
+        if (!isGuardian(_guardian)) revert GuardianFacet__NonExistentGuardian();
         GuardianStorage storage gs = LibFacetStorage.guardianStorage();
         bytes32 id = keccak256(abi.encodePacked(_guardian, "REMOVE"));
         if (
@@ -218,6 +225,8 @@ contract GuardianFacet is IGuardianFacet {
      */
     function cancelGuardianAddition(address _guardian) external override {
         LibDiamond.enforceIsSelf();
+        LibFacetGuard.enforceFacetValidation();
+
         bytes32 id = keccak256(abi.encodePacked(_guardian, "ADD"));
         GuardianStorage storage gs = LibFacetStorage.guardianStorage();
         if (gs.pending[id] == 0) {
@@ -235,6 +244,8 @@ contract GuardianFacet is IGuardianFacet {
      */
     function cancelGuardianRemoval(address _guardian) external override {
         LibDiamond.enforceIsSelf();
+        LibFacetGuard.enforceFacetValidation();
+
         bytes32 id = keccak256(abi.encodePacked(_guardian, "REMOVE"));
         GuardianStorage storage gs = LibFacetStorage.guardianStorage();
         if (gs.pending[id] == 0) {

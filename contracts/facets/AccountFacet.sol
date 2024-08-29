@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: Apache-2.0
-pragma solidity 0.8.21;
+pragma solidity 0.8.26;
 
 import {ECDSA} from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import {UserOperation} from "../aa-4337/interfaces/UserOperation.sol";
 import {IEntryPoint} from "../aa-4337/interfaces/IEntryPoint.sol";
 import {BaseAccount} from "../aa-4337/core/BaseAccount.sol";
+import {LibFacetGuard} from "../libraries/LibFacetGuard.sol";
 import {LibAppStorage, BarzStorage} from "../libraries/LibAppStorage.sol";
 import {LibDiamond} from "../libraries/LibDiamond.sol";
 import {LibLoupe} from "../libraries/LibLoupe.sol";
@@ -185,8 +186,10 @@ contract AccountFacet is IAccountFacet, BarzStorage, BaseAccount {
         (bool success, bytes memory result) = facet.delegatecall(validateCall);
         if (!success) revert AccountFacet__CallNotSuccessful();
         validationData = uint256(bytes32(result));
-        if (validationData == 0) emit VerificationSuccess(_userOpHash);
-        else emit VerificationFailure(_userOpHash);
+        if (validationData == 0) {
+            LibFacetGuard.allowFacetValidation();
+            emit VerificationSuccess(_userOpHash);
+        } else emit VerificationFailure(_userOpHash);
     }
 
     /**

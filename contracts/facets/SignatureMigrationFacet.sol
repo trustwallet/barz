@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: Apache-2.0
-pragma solidity 0.8.21;
+pragma solidity 0.8.26;
 
 import {SignatureChecker} from "@openzeppelin/contracts/utils/cryptography/SignatureChecker.sol";
 import {LibAppStorage} from "../libraries/LibAppStorage.sol";
 import {LibFacetStorage, SignatureMigrationStorage, SignatureMigrationConfig, SignatureMigrationApprovalConfig, ApprovalConfig} from "../libraries/LibFacetStorage.sol";
 import {LibDiamond} from "../libraries/LibDiamond.sol";
+import {LibFacetGuard} from "../libraries/LibFacetGuard.sol";
 import {LibGuardian} from "../libraries/LibGuardian.sol";
 import {LibLoupe} from "../libraries/LibLoupe.sol";
 import {Modifiers} from "./Modifiers.sol";
@@ -77,6 +78,8 @@ contract SignatureMigrationFacet is ISignatureMigrationFacet, Modifiers {
     {
         // Only self contract can call this function
         LibDiamond.enforceIsSelf();
+        LibFacetGuard.enforceFacetValidation();
+
         // Should revert if guardian exist
         if (0 != LibGuardian.guardianCount()) {
             revert SignatureMigrationFacet__InvalidRouteWithGuardian();
@@ -338,6 +341,7 @@ contract SignatureMigrationFacet is ISignatureMigrationFacet, Modifiers {
     function finalizeSignatureMigration() external override {
         // NOTE: Only owner can call this function
         LibDiamond.enforceIsSelf();
+        LibFacetGuard.enforceFacetValidation();
 
         SignatureMigrationStorage storage ms = LibFacetStorage
             .migrationStorage();
