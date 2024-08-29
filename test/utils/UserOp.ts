@@ -229,8 +229,16 @@ export async function callFromEntryPointOnK1(entryPoint: EntryPoint, sender: str
   return entryPoint.handleOps([userOp], sender)
 }
 
-export async function callFromEntryPointOnR1(entryPoint: EntryPoint, sender: string, signer: any, callData: BytesLike, nonce: uint256) {
-  const accountBarz = await getAccountBarz(sender)
+export async function callFromEntryPointOnR1(entryPoint: EntryPoint, sender: string, signer: any, callData: BytesLike, nonce?: BigNumber | number) {
+  if (nonce == undefined) {
+    try {
+      const accountBarz = await getAccountBarz(sender)
+      nonce = await accountBarz.getNonce()
+    } catch(error) {
+      nonce = await (await ethers.getContractAt("AccountFacetV2", sender)).nonce(0x00)
+    }
+  }
+
   const userOp = signUserOpR1Curve(fillUserOpDefaults({
     sender: sender,
     nonce: nonce,
