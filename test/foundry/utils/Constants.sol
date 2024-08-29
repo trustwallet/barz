@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-pragma solidity 0.8.21;
+pragma solidity 0.8.26;
 
 import {IDiamondCut} from "../../../contracts/facets/base/interfaces/IDiamondCut.sol";
 import {IDiamondLoupe} from "../../../contracts/facets/base/interfaces/IDiamondLoupe.sol";
