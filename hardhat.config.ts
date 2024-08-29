@@ -8,6 +8,7 @@ import 'hardhat-contract-sizer'
 import 'hardhat-deploy'
 import "solidity-coverage";
 import "@nomicfoundation/hardhat-foundry";
+import "@nomicfoundation/hardhat-viem";
 dotenv.config();
 
 function getNetworkUrl(name: string): string {
@@ -17,13 +18,59 @@ function getNetworkUrl(name: string): string {
 
 const config: HardhatUserConfig = {
   solidity: {
-    version: "0.8.21",
-    settings: {
-      optimizer: {
-        enabled: true,
-        runs: 999999,
+    compilers: [{
+      version: "0.8.26",
+      settings: {
+        optimizer: {
+          enabled: true,
+          runs: 999999,
+        },
+        evmVersion: "cancun",
+      }
+    }],
+    overrides: {
+      "contracts/facets/msca/MSCAFacet.sol": {
+        version: "0.8.26",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 0,
+          },
+          viaIR: true,
+        }
       },
-    },
+      "contracts/facets/msca/utils/ModuleManager.sol": {
+        version: "0.8.26",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 0,
+          },
+          viaIR: true,
+        }
+      },
+      "contracts/facets/verification/secp256r1/Secp256r1VerificationFacetV2.sol": {
+        version: "0.8.26",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 0,
+          },
+          viaIR: true,
+        }
+      },
+      "contracts/libraries/LibFacetGuard.sol": {
+        version: "0.8.26",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 0,
+          },
+          viaIR: true,
+          evmVersion: "cancun",
+        }
+      }
+    }
   },
   networks: {
     local: {
@@ -33,6 +80,10 @@ const config: HardhatUserConfig = {
       blockGasLimit: 30_000_000,
       chainId: 3604,
       initialBaseFeePerGas: 10 // Putting gas to low for coverage testing
+    },
+    ethereum: {
+      url: getNetworkUrl('mainnet'),
+      accounts: [deploymentConfig.PRIVATE_KEY || ""],
     },
     goerli: {
       url: getNetworkUrl('goerli'),
@@ -87,7 +138,7 @@ const config: HardhatUserConfig = {
     timeout: 10000
   },
   etherscan: {
-    apiKey: process.env.BSCSCAN_API_KEY
+    apiKey: process.env.ETHERSCAN_API_KEY
   }
 };
 

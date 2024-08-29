@@ -1,14 +1,18 @@
 import { ethers } from 'hardhat'
 import {
+    BytesLike,
     arrayify,
     keccak256,
     parseEther
 } from 'ethers/lib/utils'
-import { BigNumber, Contract, Wallet } from 'ethers'
+import { BigNumber, Contract, Wallet, utils } from 'ethers'
+import { AddressLike } from 'ethereumjs-util'
+import { MMSAFacet__factory } from '../../typechain-types'
 
 
 export const AddressZero = ethers.constants.AddressZero
 export const AddressOne = "0x0000000000000000000000000000000000000001"
+export const ENTRYPOINT_V6 = "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789"
 export const HashZero = ethers.constants.HashZero
 export const ONE_ETH = parseEther('1')
 export const TWO_ETH = parseEther('2')
@@ -16,6 +20,31 @@ export const FIVE_ETH = parseEther('5')
 export const callGasLimit = 2000000
 export const verificationGasLimit = 1000000
 export const maxFeePerGas = 1
+export const VALIDATOR_MODULE_TYPE = 1
+export const EXECUTOR_MODULE_TYPE = 2
+export const FALLBACK_MODULE_TYPE = 3
+export const HOOK_MODULE_TYPE = 4
+export const POLICY_MODULE_TYPE = 5
+export const SIGNER_MODULE_TYPE = 6
+export const MMSA_VALIDATOR_SYSTEM = "0x7579"
+export const MSCA_VALIDATOR_SYSTEM = "0x6900"
+export const MMSA_VALIDATOR_VALIDATION_TYPE = "0x01"
+export const MMSA_PERMISSION_VALIDATION_TYPE = "0x02"
+export const MMSA_UNUSED_NONCE_BYTES = "0x00000000000000000000000000000000"
+export const ENABLE_USEROP_FLAG = "0x0000"
+export const DefaultMissingAmount = 123
+export const DEFAULT_PAGE_SIZE = 10
+
+// define mode and exec type enums for 7579
+export const CALLTYPE_SINGLE = "0x00"; // 1 byte
+export const CALLTYPE_BATCH = "0x01"; // 1 byte
+export const CALLTYPE_STATIC = "0xFE"; // 1 byte
+export const CALLTYPE_DELEGATECALL = "0xFF"; // 1 byte
+export const EXECTYPE_DEFAULT = "0x00"; // 1 byte
+export const EXECTYPE_TRY = "0x01"; // 1 byte
+export const MODE_DEFAULT = "0x00000000"; // 4 bytes
+export const UNUSED = "0x00000000"; // 4 bytes
+export const MODE_PAYLOAD = "0x00000000000000000000000000000000000000000000"; // 22 bytes
 
 const panicCodes: { [key: number]: string } = {
     // from https://docs.soliditylang.org/en/v0.8.0/control-structures.html
@@ -129,25 +158,53 @@ export async function getMessageHash(message: any, chainId: any, contractAddress
     return ethers.utils.keccak256(encodedMessageData);
 }
 
-export function generateExampleMsgHash() {
-    const enc = ethers.utils.defaultAbiCoder.encode(['string'], ["LOGIN to TW Wallet Timestamp:1683119999"])
-    return ethers.utils.keccak256(enc)
+export const EIP712_BARZ_MESSAGE_TYPE = {
+    // "BarzMessage(bytes message)"
+    BarzMessage: [{ type: "bytes", name: "message" }],
+};
+
+export const EIP712_MMSA_MESSAGE_TYPE = {
+    // "Barz7579Message(bytes message)"
+    Barz7579Message: [{ type: "bytes", name: "message" }],
 }
 
-export function sortSignatures(mapping: any): string {
-    let signatures = ""
-    Object.keys(mapping)
-    .sort((a, b) => a.localeCompare(b))
-    .forEach(key => {
-        signatures += mapping[key]
-    });
-    return "0x" + signatures.replace("undefined", "")
+export function construct7579Nonce(validationType: any, validatorOrPermission: BytesLike, validatorSystem: BytesLike, nonce="0x00") {
+    const encodedNonce = ethers.utils.hexZeroPad(nonce, 8);
+
+    if (validationType == MMSA_VALIDATOR_VALIDATION_TYPE) {
+        return ethers.utils.solidityPack(["bytes1", "bytes20", "bytes1", "bytes2", "bytes8"], [validationType, validatorOrPermission, "0x00", validatorSystem, encodedNonce])
+    } else if (validationType == MMSA_PERMISSION_VALIDATION_TYPE) {
+        return ethers.utils.solidityPack(["bytes1", "bytes4", "bytes16", "bytes1", "bytes2", "bytes8"], [validationType, validatorOrPermission, MMSA_UNUSED_NONCE_BYTES, "0x00", validatorSystem, encodedNonce])
+    } else {
+        console.error("ERROR: Invalid validationType from testutils.ts -> construct7579Nonce()")
+        return ""
+    }
 }
 
-export function removePrefix(bytes: string): string {
-    return bytes.replace("0x", "")
+export function encode7579Execution(isBatch = false, callType: BytesLike, execType: BytesLike, executions: any) {
+    const mode = encode7579Mode(callType, execType)
+    const abiCoder = new utils.AbiCoder();
+    let encodedExecutionCalldata;
+    if (isBatch) {
+        encodedExecutionCalldata = abiCoder.encode([Executions], [executions])
+    } else {
+        encodedExecutionCalldata = ethers.utils.solidityPack(["address", "uint256", "bytes"], [executions[0].target, executions[0].value, executions[0].callData])
+    }
+
+    const mmsaInterface = new ethers.utils.Interface(MMSAFacet__factory.abi)
+    return mmsaInterface.encodeFunctionData("execute", [mode, encodedExecutionCalldata])
 }
 
-export function addPrefix(bytes: string): string {
-    return "0x" + bytes
+export function encode7579Mode(callType: BytesLike, execType: BytesLike) {
+    return ethers.utils.concat([callType, execType, MODE_DEFAULT, UNUSED, MODE_PAYLOAD])
 }
+
+const Executions = utils.ParamType.from({
+    type: "tuple(address,uint256,bytes)[]",
+    components: [
+        { name: "target", type: "address" },
+        { name: "value", type: "uint256" },
+        { name: "callData", type: "bytes" },
+    ],
+});
+

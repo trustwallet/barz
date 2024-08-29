@@ -14,7 +14,7 @@ import { AddressZero } from './testutils'
 import { ecsign, toRpcSig, keccak256 as keccak256_buffer } from 'ethereumjs-util'
 import { UserOperation } from './UserOperation'
 import base64url from 'base64url'
-import { AccountFacet__factory } from '../../typechain-types'
+import { AccountFacetV2__factory, AccountFacet__factory } from '../../typechain-types'
 import { ethers } from 'hardhat'
 import { uint256 } from './solidityTypes'
 import { EntryPoint } from '../../typechain-types/core'
@@ -205,6 +205,11 @@ export function executeCallData(dest: BytesLike, value: uint256, callData: Bytes
   return accountInterface.encodeFunctionData("execute", [dest, value, callData])
 }
 
+export function executeSingleCallData(dest: BytesLike, value: uint256, callData: BytesLike): BytesLike {
+  const accountInterface = new ethers.utils.Interface(AccountFacetV2__factory.abi)
+  return accountInterface.encodeFunctionData("executeSingle", [dest, value, callData])
+}
+
 export function executeBatchCallData(dest: BytesLike[], values: uint256[], callData: BytesLike[]): BytesLike {
   const accountInterface = new ethers.utils.Interface(AccountFacet__factory.abi)
   return accountInterface.encodeFunctionData("executeBatch", [dest, values, callData])
@@ -224,11 +229,11 @@ export async function callFromEntryPointOnK1(entryPoint: EntryPoint, sender: str
   return entryPoint.handleOps([userOp], sender)
 }
 
-export async function callFromEntryPointOnR1(entryPoint: EntryPoint, sender: string, signer: any, callData: BytesLike) {
+export async function callFromEntryPointOnR1(entryPoint: EntryPoint, sender: string, signer: any, callData: BytesLike, nonce: uint256) {
   const accountBarz = await getAccountBarz(sender)
   const userOp = signUserOpR1Curve(fillUserOpDefaults({
     sender: sender,
-    nonce: await accountBarz.getNonce(),
+    nonce: nonce,
     callData,
     callGasLimit,
     verificationGasLimit,

@@ -19,7 +19,7 @@ import { secp256r1VerificationFacetFixture } from '../fixtures/Secp256r1Verifica
 import { barzFixture } from '../fixtures/BarzFixture'
 import { EntryPoint } from '../../typechain-types'
 import { facetRegistryFixture } from '../fixtures/FacetRegistryFixture'
-import { callFromEntryPointOnK1, callFromEntryPointOnR1, executeCallData } from './UserOp'
+import { callFromEntryPointOnK1, callFromEntryPointOnR1, executeBatchCallData, executeCallData } from './UserOp'
 import { uint256 } from './solidityTypes'
 import { diamondLoupeFacetFixture } from '../fixtures/DiamondLoupeFacetFixture'
 import { tokenReceiverFacetFixture } from '../fixtures/TokenReceiverFacetFixture'
@@ -163,7 +163,7 @@ export const addFacetSelectorsViaEntryPointOnK1 = async (barz: Barz, owner: any,
     const accountFacetBarz = await getFacetBarz('AccountFacet', barz)
     const callData = diamondCutBarz.interface.encodeFunctionData("diamondCut", [cut, AddressZero, "0x00"])
     const wrappedCallData = executeCallData(barz.address, 0, callData)
-    return callFromEntryPointOnK1(entryPoint, barz.address, owner, wrappedCallData, await accountFacetBarz.getNonce())
+    return callFromEntryPointOnK1(entryPoint, barz.address, owner, wrappedCallData)
 }
 
 export const addFacetSelectorsViaEntryPointOnR1 = async (barz: Barz, keyPair: any, facet: any, selectors: any, entryPoint: EntryPoint) => {
@@ -172,5 +172,13 @@ export const addFacetSelectorsViaEntryPointOnR1 = async (barz: Barz, keyPair: an
     const accountFacetBarz = await getFacetBarz('AccountFacet', barz)
     const callData = diamondCutBarz.interface.encodeFunctionData("diamondCut", [cut, AddressZero, "0x00"])
     const wrappedCallData = executeCallData(barz.address, 0, callData)
-    return callFromEntryPointOnR1(entryPoint, barz.address, keyPair, wrappedCallData, await accountFacetBarz.getNonce())
+    return callFromEntryPointOnR1(entryPoint, barz.address, keyPair, wrappedCallData)
+}
+
+export const addFacetSelectorsViaEntryPointOnR1WithCall = async (barz: Barz, keyPair: any, facet: any, selectors: any, entryPoint: EntryPoint, nonce: uint256 = 0, target: any, value: any, data: any) => {
+    const cut = diamondCut(facet.address, FacetCutAction.Add, selectors)
+    const diamondCutBarz = await getFacetBarz('DiamondCutFacet', barz)
+    const callData = diamondCutBarz.interface.encodeFunctionData("diamondCut", [cut, AddressZero, "0x00"])
+    const wrappedCallData = executeBatchCallData([barz.address, target], [0, value], [callData, data])
+    return callFromEntryPointOnR1(entryPoint, barz.address, keyPair, wrappedCallData)
 }
