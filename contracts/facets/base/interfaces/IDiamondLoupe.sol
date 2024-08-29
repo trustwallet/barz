@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-pragma solidity 0.8.21;
+pragma solidity 0.8.26;
 
 // A loupe is a small magnifying glass used to look at diamonds.
 // These functions look at diamonds

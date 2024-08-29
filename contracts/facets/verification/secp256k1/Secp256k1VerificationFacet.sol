@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-pragma solidity 0.8.21;
+pragma solidity 0.8.26;
 
 import {ECDSA} from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import {UserOperation} from "../../../aa-4337/interfaces/UserOperation.sol";
@@ -59,10 +59,10 @@ contract Secp256k1VerificationFacet is IVerificationFacet, IERC1271 {
                 // address is encoded with zero padded at the end part. e,g,m 0x1234...0000
                 // calldataload will load the 32 bytes and assigning it to signer(with type address) will truncate the first 12bytes, which returns invalid address
                 // hence, we sub 12 to the offset so the signer will be a valid address
-                signer := calldataload(sub(_publicKey.offset, 12))                
+                signer := calldataload(sub(_publicKey.offset, 12))
             }
             default {
-                revert (0, 0)
+                revert(0, 0)
             }
         }
         k1Storage.signer = signer;
@@ -182,7 +182,9 @@ contract Secp256k1VerificationFacet is IVerificationFacet, IERC1271 {
     function isValidKeyType(
         bytes memory _publicKey
     ) public pure override returns (bool isValid) {
-        isValid = (_publicKey.length == 65 && _publicKey[0] == 0x04) || (_publicKey.length == 20);
+        isValid =
+            (_publicKey.length == 65 && _publicKey[0] == 0x04) ||
+            (_publicKey.length == 20);
     }
 
     /**

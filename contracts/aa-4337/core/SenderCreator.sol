@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity 0.8.21;
+pragma solidity 0.8.26;
 
 /**
  * helper contract for EntryPoint, to call userOp.initCode from a "neutral" address,
