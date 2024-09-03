@@ -54,14 +54,25 @@ contract ValidationManager {
         }
     }
 
-    function _installPermission(PermissionId _permission, bytes calldata _permissionData) internal {
+    function _installPermission(
+        PermissionId _permission,
+        bytes calldata _permissionData
+    ) internal {
         MMSAStorage storage mmsaStorage = LibMMSAStorage.mmsaStorage();
         bytes[] calldata permissionInstallationData;
         assembly {
-            permissionInstallationData.offset := add(add(_permissionData.offset, 32), calldataload(_permissionData.offset))
-            permissionInstallationData.length := calldataload(sub(permissionInstallationData.offset, 32))
+            permissionInstallationData.offset := add(
+                add(_permissionData.offset, 32),
+                calldataload(_permissionData.offset)
+            )
+            permissionInstallationData.length := calldataload(
+                sub(permissionInstallationData.offset, 32)
+            )
         }
-        if (permissionInstallationData.length > 254 || permissionInstallationData.length == 0) {
+        if (
+            permissionInstallationData.length > 254 ||
+            permissionInstallationData.length == 0
+        ) {
             revert ValidationManager__InvalidPolicyDataLength();
         }
 
@@ -74,54 +85,108 @@ contract ValidationManager {
             mmsaStorage.permissionConfig[_permission].policyData.push(
                 PolicyData.wrap(bytes22(permissionInstallationData[i][0:22]))
             );
-            IPolicy(address(bytes20(permissionInstallationData[i][2:22]))).onInstall(
-                abi.encodePacked(bytes32(PermissionId.unwrap(_permission)), permissionInstallationData[i][22:])
-            );
+            IPolicy(address(bytes20(permissionInstallationData[i][2:22])))
+                .onInstall(
+                    abi.encodePacked(
+                        bytes32(PermissionId.unwrap(_permission)),
+                        permissionInstallationData[i][22:]
+                    )
+                );
 
-            emit IMMSAFacet.ModuleInstalled(POLICY_MODULE_TYPE, address(bytes20(permissionInstallationData[i][2:22])));
+            emit IMMSAFacet.ModuleInstalled(
+                POLICY_MODULE_TYPE,
+                address(bytes20(permissionInstallationData[i][2:22]))
+            );
         }
-        
-        ISigner signer = ISigner(address(bytes20(permissionInstallationData[signerIndex][2:22])));
+
+        ISigner signer = ISigner(
+            address(bytes20(permissionInstallationData[signerIndex][2:22]))
+        );
         mmsaStorage.permissionConfig[_permission].signer = signer;
-        mmsaStorage.permissionConfig[_permission].permissionFlag = PassFlag.wrap(bytes2(permissionInstallationData[signerIndex][0:22]));
+        mmsaStorage.permissionConfig[_permission].permissionFlag = PassFlag
+            .wrap(bytes2(permissionInstallationData[signerIndex][0:22]));
         signer.onInstall(
             abi.encodePacked(
-                bytes32(PermissionId.unwrap(_permission)), permissionInstallationData[signerIndex][22:]
+                bytes32(PermissionId.unwrap(_permission)),
+                permissionInstallationData[signerIndex][22:]
             )
         );
         emit IMMSAFacet.ModuleInstalled(SIGNER_MODULE_TYPE, address(signer));
     }
 
-    function _uninstallPermission(PermissionId _permission, bytes calldata _permissionData) internal {
+    function _uninstallPermission(
+        PermissionId _permission,
+        bytes calldata _permissionData
+    ) internal {
         bytes[] calldata permissionUninstallData;
         assembly {
-            permissionUninstallData.offset := add(add(_permissionData.offset, 32), calldataload(_permissionData.offset))
-            permissionUninstallData.length := calldataload(sub(permissionUninstallData.offset, 32))
+            permissionUninstallData.offset := add(
+                add(_permissionData.offset, 32),
+                calldataload(_permissionData.offset)
+            )
+            permissionUninstallData.length := calldataload(
+                sub(permissionUninstallData.offset, 32)
+            )
         }
-        PermissionConfig storage permissionConfig = LibMMSAStorage.mmsaStorage().permissionConfig[_permission];
+        PermissionConfig storage permissionConfig = LibMMSAStorage
+            .mmsaStorage()
+            .permissionConfig[_permission];
 
-        if (permissionUninstallData.length != permissionConfig.policyData.length + 1) {
+        if (
+            permissionUninstallData.length !=
+            permissionConfig.policyData.length + 1
+        ) {
             revert ValidationManager__InvalidPolicyDataLength();
         }
         PolicyData[] storage policyData = permissionConfig.policyData;
         for (uint256 i = 0; i < policyData.length; ++i) {
             (, IPolicy policy) = decodePolicyData(policyData[i]);
 
-            try policy.onUninstall(abi.encodePacked(bytes32(PermissionId.unwrap(_permission)), permissionUninstallData[i])) {} catch {
-                emit PermissionUninstallCallFailed(address(policy), permissionUninstallData[i]);
+            try
+                policy.onUninstall(
+                    abi.encodePacked(
+                        bytes32(PermissionId.unwrap(_permission)),
+                        permissionUninstallData[i]
+                    )
+                )
+            {} catch {
+                emit PermissionUninstallCallFailed(
+                    address(policy),
+                    permissionUninstallData[i]
+                );
             }
 
-            emit IMMSAFacet.ModuleUninstalled(POLICY_MODULE_TYPE, address(policy));
+            emit IMMSAFacet.ModuleUninstalled(
+                POLICY_MODULE_TYPE,
+                address(policy)
+            );
         }
         delete LibMMSAStorage.mmsaStorage().permissionConfig[_permission];
 
-        try permissionConfig.signer.onUninstall(abi.encodePacked(PermissionId.unwrap(_permission), permissionUninstallData[permissionUninstallData.length - 1])) {} catch {
-            emit PermissionUninstallCallFailed(address(permissionConfig.signer), permissionUninstallData[permissionUninstallData.length - 1]);
+        try
+            permissionConfig.signer.onUninstall(
+                abi.encodePacked(
+                    PermissionId.unwrap(_permission),
+                    permissionUninstallData[permissionUninstallData.length - 1]
+                )
+            )
+        {} catch {
+            emit PermissionUninstallCallFailed(
+                address(permissionConfig.signer),
+                permissionUninstallData[permissionUninstallData.length - 1]
+            );
         }
-        emit IMMSAFacet.ModuleUninstalled(SIGNER_MODULE_TYPE, address(permissionConfig.signer));
+        emit IMMSAFacet.ModuleUninstalled(
+            SIGNER_MODULE_TYPE,
+            address(permissionConfig.signer)
+        );
     }
 
-    function _validate(ValidationId _validation, UserOperation calldata _userOp, bytes32 _userOpHash) internal returns (uint256 validationData) {
+    function _validate(
+        ValidationId _validation,
+        UserOperation calldata _userOp,
+        bytes32 _userOpHash
+    ) internal returns (uint256 validationData) {
         ValidationType validationType = getValidationType(_validation);
 
         if (validationType == VALIDATOR_VALIDATION_TYPE) {
@@ -130,27 +195,63 @@ contract ValidationManager {
             if (!LibMMSAStorage.mmsaStorage().validators.contains(validator)) {
                 return VALIDATION_FAILURE;
             }
-            validationData = IValidator(validator).validateUserOp(_userOp, _userOpHash);
+            validationData = IValidator(validator).validateUserOp(
+                _userOp,
+                _userOpHash
+            );
         } else {
             PermissionId permissionId = getPermissionId(_validation);
 
-            if (PassFlag.unwrap(LibMMSAStorage.mmsaStorage().permissionConfig[permissionId].permissionFlag) & PassFlag.unwrap(SKIP_USEROP) != 0) {
+            if (
+                PassFlag.unwrap(
+                    LibMMSAStorage
+                        .mmsaStorage()
+                        .permissionConfig[permissionId]
+                        .permissionFlag
+                ) &
+                    PassFlag.unwrap(SKIP_USEROP) !=
+                0
+            ) {
                 revert ValidationManager__PermissionNotAllowedForPermission();
             }
 
-            (uint256 policyValidationData, ISigner signer) = _validateUserOpPolicy(permissionId, _userOp, _userOp.signature);
-            validationData = _mergeValidationData(uint256(0), policyValidationData);
-            validationData = _mergeValidationData(validationData, signer.checkUserOpSignature(bytes32(PermissionId.unwrap(permissionId)), _userOp, _userOpHash));
+            (
+                uint256 policyValidationData,
+                ISigner signer
+            ) = _validateUserOpPolicy(permissionId, _userOp, _userOp.signature);
+            validationData = _mergeValidationData(
+                uint256(0),
+                policyValidationData
+            );
+            validationData = _mergeValidationData(
+                validationData,
+                signer.checkUserOpSignature(
+                    bytes32(PermissionId.unwrap(permissionId)),
+                    _userOp,
+                    _userOpHash
+                )
+            );
         }
     }
 
-    function _validateUserOpPolicy(PermissionId _permission, UserOperation memory _userOp, bytes calldata _userOpSig) internal returns (uint256 validationData, ISigner signer) {
-        PermissionConfig storage permissionStorage = LibMMSAStorage.mmsaStorage().permissionConfig[_permission];
+    function _validateUserOpPolicy(
+        PermissionId _permission,
+        UserOperation memory _userOp,
+        bytes calldata _userOpSig
+    ) internal returns (uint256 validationData, ISigner signer) {
+        PermissionConfig storage permissionStorage = LibMMSAStorage
+            .mmsaStorage()
+            .permissionConfig[_permission];
         PolicyData[] storage policyData = permissionStorage.policyData;
         for (uint256 i = 0; i < policyData.length; i++) {
-            (PassFlag passFlag, IPolicy policy) = decodePolicyData(policyData[i]);
+            (PassFlag passFlag, IPolicy policy) = decodePolicyData(
+                policyData[i]
+            );
             if (PassFlag.unwrap(passFlag) & PassFlag.unwrap(SKIP_USEROP) == 0) {
-                validationData = policy.checkUserOpPolicy(bytes32(PermissionId.unwrap(_permission)), _userOp);
+                validationData = policy.checkUserOpPolicy(
+                    bytes32(PermissionId.unwrap(_permission)),
+                    _userOp
+                );
                 address result = getValidationData(validationData);
                 if (result != address(0)) {
                     revert ValidationManager__PolicyFailed(address(policy));
@@ -160,7 +261,10 @@ contract ValidationManager {
         return (validationData, permissionStorage.signer);
     }
 
-    function _mergeValidationData(uint256 a, uint256 b) internal pure returns (uint256 validationData) {
+    function _mergeValidationData(
+        uint256 a,
+        uint256 b
+    ) internal pure returns (uint256 validationData) {
         assembly {
             // xor(a,b) == shows only matching bits
             // and(xor(a,b), 0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff) == filters out the validAfter and validUntil bits
@@ -171,54 +275,95 @@ contract ValidationManager {
             // a mul b != 0 && xor(a,b) != 0
             let sum := shl(96, add(a, b))
             switch or(
-                iszero(and(xor(a, b), 0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff)),
+                iszero(
+                    and(
+                        xor(a, b),
+                        0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff
+                    )
+                ),
                 or(eq(sum, shl(96, a)), eq(sum, shl(96, b)))
             )
             case 1 {
-                validationData := and(or(a, b), 0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff)
+                validationData := and(
+                    or(a, b),
+                    0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff
+                )
                 // validAfter
-                let a_vd := and(0xffffffffffff0000000000000000000000000000000000000000000000000000, a)
-                let b_vd := and(0xffffffffffff0000000000000000000000000000000000000000000000000000, b)
-                validationData := or(validationData, xor(a_vd, mul(xor(a_vd, b_vd), gt(b_vd, a_vd))))
+                let a_vd := and(
+                    0xffffffffffff0000000000000000000000000000000000000000000000000000,
+                    a
+                )
+                let b_vd := and(
+                    0xffffffffffff0000000000000000000000000000000000000000000000000000,
+                    b
+                )
+                validationData := or(
+                    validationData,
+                    xor(a_vd, mul(xor(a_vd, b_vd), gt(b_vd, a_vd)))
+                )
                 // validUntil
-                a_vd := and(0x000000000000ffffffffffff0000000000000000000000000000000000000000, a)
-                if iszero(a_vd) { a_vd := 0x000000000000ffffffffffff0000000000000000000000000000000000000000 }
-                b_vd := and(0x000000000000ffffffffffff0000000000000000000000000000000000000000, b)
-                if iszero(b_vd) { b_vd := 0x000000000000ffffffffffff0000000000000000000000000000000000000000 }
+                a_vd := and(
+                    0x000000000000ffffffffffff0000000000000000000000000000000000000000,
+                    a
+                )
+                if iszero(a_vd) {
+                    a_vd := 0x000000000000ffffffffffff0000000000000000000000000000000000000000
+                }
+                b_vd := and(
+                    0x000000000000ffffffffffff0000000000000000000000000000000000000000,
+                    b
+                )
+                if iszero(b_vd) {
+                    b_vd := 0x000000000000ffffffffffff0000000000000000000000000000000000000000
+                }
                 let until := xor(a_vd, mul(xor(a_vd, b_vd), lt(b_vd, a_vd)))
-                if iszero(until) { until := 0x000000000000ffffffffffff0000000000000000000000000000000000000000 }
+                if iszero(until) {
+                    until := 0x000000000000ffffffffffff0000000000000000000000000000000000000000
+                }
                 validationData := or(validationData, until)
             }
-            default { validationData := VALIDATION_FAILURE }
+            default {
+                validationData := VALIDATION_FAILURE
+            }
         }
     }
 
-    function decodePolicyData(PolicyData _policyData) internal pure returns (PassFlag passFlag, IPolicy policy) {
+    function decodePolicyData(
+        PolicyData _policyData
+    ) internal pure returns (PassFlag passFlag, IPolicy policy) {
         assembly {
             passFlag := _policyData
             policy := shr(80, _policyData)
         }
     }
 
-    function getValidationType(ValidationId _validationId) internal pure returns (ValidationType validationType) {
+    function getValidationType(
+        ValidationId _validationId
+    ) internal pure returns (ValidationType validationType) {
         assembly {
             validationType := _validationId
         }
     }
 
-    function getValidator(ValidationId _validationId) internal pure returns (address validator) {
+    function getValidator(
+        ValidationId _validationId
+    ) internal pure returns (address validator) {
         assembly {
             validator := shr(88, _validationId)
         }
     }
 
-    function getPermissionId(ValidationId _validationId) internal pure returns (PermissionId permissionId) {
+    function getPermissionId(
+        ValidationId _validationId
+    ) internal pure returns (PermissionId permissionId) {
         assembly {
             permissionId := shl(8, _validationId)
         }
     }
 
-    function getValidationData(uint256 _validationData) internal pure returns (address data) {
+    function getValidationData(
+        uint256 _validationData
+    ) internal pure returns (address data) {
         assembly {
             data := _validationData
         }

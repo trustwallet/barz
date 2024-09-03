@@ -22,17 +22,24 @@ abstract contract SignerBase is ISigner {
     }
 
     function isInitialized(address) external view virtual returns (bool); // TODO : not sure if this is the right way to do it
-    function checkUserOpSignature(bytes32 id, UserOperation calldata userOp, bytes32 userOpHash)
-        external
-        payable
-        virtual
-        returns (uint256);
-    function checkSignature(bytes32 id, address sender, bytes32 hash, bytes calldata sig)
-        external
-        view
-        virtual
-        returns (bytes4);
+    function checkUserOpSignature(
+        bytes32 id,
+        UserOperation calldata userOp,
+        bytes32 userOpHash
+    ) external payable virtual returns (uint256);
+    function checkSignature(
+        bytes32 id,
+        address sender,
+        bytes32 hash,
+        bytes calldata sig
+    ) external view virtual returns (bytes4);
 
-    function _signerOninstall(bytes32 id, bytes calldata _data) internal virtual;
-    function _signerOnUninstall(bytes32 id, bytes calldata _data) internal virtual;
+    function _signerOninstall(
+        bytes32 id,
+        bytes calldata _data
+    ) internal virtual;
+    function _signerOnUninstall(
+        bytes32 id,
+        bytes calldata _data
+    ) internal virtual;
 }

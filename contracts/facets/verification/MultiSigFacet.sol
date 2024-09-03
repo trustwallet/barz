@@ -285,7 +285,9 @@ contract MultiSigFacet is IMultiSigFacet, IVerificationFacet, IERC1271 {
                 }
             } else if (signatureType == 2) {
                 // If signatureType is 2 then it is an approved hash
-                if (ms.approvedHashes[ms.counter][currentOwner][_dataHash] == 0) {
+                if (
+                    ms.approvedHashes[ms.counter][currentOwner][_dataHash] == 0
+                ) {
                     return INVALID_SIG;
                 }
             } else if (signatureType == 3) {

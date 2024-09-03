@@ -22,17 +22,23 @@ abstract contract PolicyBase is IPolicy {
     }
 
     function isInitialized(address) external view virtual returns (bool); // TODO : not sure if this is the right way to do it
-    function checkUserOpPolicy(bytes32 id, UserOperation calldata userOp)
-        external
-        payable
-        virtual
-        returns (uint256);
-    function checkSignaturePolicy(bytes32 id, address sender, bytes32 hash, bytes calldata sig)
-        external
-        view
-        virtual
-        returns (uint256);
+    function checkUserOpPolicy(
+        bytes32 id,
+        UserOperation calldata userOp
+    ) external payable virtual returns (uint256);
+    function checkSignaturePolicy(
+        bytes32 id,
+        address sender,
+        bytes32 hash,
+        bytes calldata sig
+    ) external view virtual returns (uint256);
 
-    function _policyOninstall(bytes32 id, bytes calldata _data) internal virtual;
-    function _policyOnUninstall(bytes32 id, bytes calldata _data) internal virtual;
+    function _policyOninstall(
+        bytes32 id,
+        bytes calldata _data
+    ) internal virtual;
+    function _policyOnUninstall(
+        bytes32 id,
+        bytes calldata _data
+    ) internal virtual;
 }

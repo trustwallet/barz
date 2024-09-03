@@ -143,7 +143,9 @@ contract DefaultFallbackHandlerV2 is IDiamondLoupe {
         facets_[4].functionSelectors[12] = IMMSAFacet
             .mmsaIsValidSignature
             .selector;
-        facets_[4].functionSelectors[13] = IMMSAFacet.installValidations.selector;
+        facets_[4].functionSelectors[13] = IMMSAFacet
+            .installValidations
+            .selector;
 
         facets_[5].facetAddress = mscaFacet;
         facets_[5].functionSelectors = new bytes4[](12);
@@ -262,7 +264,9 @@ contract DefaultFallbackHandlerV2 is IDiamondLoupe {
             facetFunctionSelectors_[12] = IMMSAFacet
                 .mmsaIsValidSignature
                 .selector;
-            facetFunctionSelectors_[13] = IMMSAFacet.installValidations.selector;
+            facetFunctionSelectors_[13] = IMMSAFacet
+                .installValidations
+                .selector;
         } else if (_facet == mscaFacet) {
             facetFunctionSelectors_[0] = IStandardExecutor.execute.selector;
             facetFunctionSelectors_[1] = IStandardExecutor

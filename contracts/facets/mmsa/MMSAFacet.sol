@@ -89,7 +89,13 @@ contract MMSAFacet is
     // |      1byte      |  4 bytes   | 16 bytes | 1 byte |      2 bytes      |   8 bytes   |
     // | Validation Type |PermissionId|  unused  | unused |  validator system |   nonceKey  | -> If Validation Type is Permission
     // |             Validation ID               |
-    function decodeNonce(uint256 _nonce) internal pure returns (ValidationType validationType, ValidationId validation) {
+    function decodeNonce(
+        uint256 _nonce
+    )
+        internal
+        pure
+        returns (ValidationType validationType, ValidationId validation)
+    {
         assembly {
             validationType := _nonce
             validation := _nonce

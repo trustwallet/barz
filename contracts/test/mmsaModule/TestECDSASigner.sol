@@ -8,16 +8,17 @@ contract TestECDSASigner is SignerBase {
     mapping(address => uint256) public usedIds;
     mapping(bytes32 id => mapping(address wallet => address)) public signer;
 
-    function isInitialized(address wallet) external view override returns (bool) {
+    function isInitialized(
+        address wallet
+    ) external view override returns (bool) {
         return usedIds[wallet] > 0;
     }
 
-    function checkUserOpSignature(bytes32 id, UserOperation calldata userOp, bytes32 userOpHash)
-        external
-        payable
-        override
-        returns (uint256)
-    {
+    function checkUserOpSignature(
+        bytes32 id,
+        UserOperation calldata userOp,
+        bytes32 userOpHash
+    ) external payable override returns (uint256) {
         address owner = signer[id][msg.sender];
         bytes calldata sig = userOp.signature;
         if (owner == ECDSA.recover(userOpHash, sig)) {
@@ -31,12 +32,12 @@ contract TestECDSASigner is SignerBase {
         return 0;
     }
 
-    function checkSignature(bytes32 id, address sender, bytes32 hash, bytes calldata sig)
-        external
-        view
-        override
-        returns (bytes4)
-    {
+    function checkSignature(
+        bytes32 id,
+        address sender,
+        bytes32 hash,
+        bytes calldata sig
+    ) external view override returns (bytes4) {
         address owner = signer[id][msg.sender];
         if (owner == ECDSA.recover(hash, sig)) {
             return 0x1626ba7e;
@@ -49,7 +50,10 @@ contract TestECDSASigner is SignerBase {
         return 0x1626ba7e;
     }
 
-    function _signerOninstall(bytes32 id, bytes calldata _data) internal override {
+    function _signerOninstall(
+        bytes32 id,
+        bytes calldata _data
+    ) internal override {
         require(signer[id][msg.sender] == address(0));
         usedIds[msg.sender]++;
         signer[id][msg.sender] = address(bytes20(_data[0:20]));

@@ -337,9 +337,7 @@ library FCLSecp256 {
                         shl(1, and(shr(index, scalar_v), 1)),
                         and(shr(index, scalar_u), 1)
                     )
-                } {
-
-                }
+                } {}
                 zz := add(
                     shl(1, and(shr(index, scalar_v), 1)),
                     and(shr(index, scalar_u), 1)
@@ -362,9 +360,7 @@ library FCLSecp256 {
                 zz := 1
                 zzz := 1
 
-                for {
-
-                } gt(minus_1, index) {
+                for {} gt(minus_1, index) {
                     index := sub(index, 1)
                 } {
                     // inlined EcZZ_Dbl

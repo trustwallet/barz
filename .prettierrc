@@ -1,0 +1,16 @@
+{
+  "overrides": [
+    {
+      "files": ".prettierrc",
+      "options": { 
+        "parser": "solidity",
+        "printWidth": 80,
+        "tabWidth": 4,
+        "useTabs": false,
+        "singleQuote": false,
+        "bracketSpacing": false
+        }
+    }
+  ],
+  "plugins": ["./node_modules/prettier-plugin-solidity/src/index.js"]
+}
