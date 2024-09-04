@@ -17,6 +17,7 @@ import {IValidator} from "./interfaces/IValidator.sol";
 import {IModule} from "./interfaces/IModule.sol";
 import {IHook} from "./interfaces/IHook.sol";
 import {IMMSAFacet} from "./interfaces/IMMSAFacet.sol";
+import {RegistryAdapter} from "./utils/RegistryAdapter.sol";
 
 /**
  * @title MMSA(Minimal Modular Smart Account) Facet
@@ -29,6 +30,7 @@ contract MMSAFacet is
     ModuleManager,
     ValidationManager,
     Executor,
+    RegistryAdapter,
     BarzStorage
 {
     using LibSentinelList for LibSentinelList.SentinelList;
@@ -118,6 +120,7 @@ contract MMSAFacet is
         override
         onlyWhenUnlocked
         withHook
+        withRegistry(msg.sender, EXECUTOR_MODULE_TYPE)
         returns (bytes[] memory returnData)
     {
         if (!_isExecutorInstalled(msg.sender)) {
@@ -175,7 +178,15 @@ contract MMSAFacet is
         uint256 _moduleTypeId,
         address _module,
         bytes calldata _initData
-    ) external payable override onlyEntryPointOrSelf onlyWhenUnlocked withHook {
+    )
+        external
+        payable
+        override
+        onlyEntryPointOrSelf
+        onlyWhenUnlocked
+        withHook
+        withRegistry(_module, _moduleTypeId)
+    {
         if (!IModule(_module).isModuleType(_moduleTypeId)) {
             revert MMSAFacet__InvalidModule(_moduleTypeId, _module);
         }
