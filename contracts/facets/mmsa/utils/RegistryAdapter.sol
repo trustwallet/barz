@@ -26,7 +26,7 @@ abstract contract RegistryAdapter {
         IERC7484 registry = LibMMSAStorage.mmsaStorage().registry;
         if (address(registry) != address(0)) {
             // this will revert if attestations / threshold are not met
-            registry.checkForAccount(msg.sender, module, moduleType);
+            registry.checkForAccount(address(this), module, moduleType);
         }
     }
 
@@ -40,8 +40,11 @@ abstract contract RegistryAdapter {
     ) internal {
         // sstore value in any case, as this function may be used to disable the use of registry
         LibMMSAStorage.mmsaStorage().registry = registry;
+
         // registry is an opt in feature for barz. if set, configure trusted attesters
-        registry.trustAttesters(threshold, attesters);
+        if (address(registry) != address(0)) {
+            registry.trustAttesters(threshold, attesters);
+        }
         emit ERC7484RegistryConfigured(address(registry));
     }
 }
