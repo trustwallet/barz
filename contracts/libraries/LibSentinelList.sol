@@ -4,6 +4,11 @@ pragma solidity ^0.8.0;
 address constant SENTINEL = address(0x1);
 address constant ZERO_ADDRESS = address(0x0);
 
+/**
+ * @title LibSentinelList
+ * @dev Library for managing a linked list of addresses
+ * @author Rhinestone
+ */
 library LibSentinelList {
     struct SentinelList {
         mapping(address => address) entries;
