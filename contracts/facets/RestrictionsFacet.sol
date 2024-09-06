@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
-pragma solidity 0.8.21;
+pragma solidity 0.8.26;
 
 import {ReentrancyGuard} from "./ReentrancyGuard.sol";
 import {LibDiamond} from "../libraries/LibDiamond.sol";
+import {LibFacetGuard} from "../libraries/LibFacetGuard.sol";
 import {LibAppStorage} from "../libraries/LibAppStorage.sol";
 import {LibFacetStorage, RestrictionsStorage} from "../libraries/LibFacetStorage.sol";
 import {IRestriction} from "../restrictions/IRestriction.sol";
@@ -34,6 +35,7 @@ contract RestrictionsFacet is IRestrictionsFacet, ReentrancyGuard {
         address[] calldata _restrictions
     ) public override returns (uint256 initSuccess) {
         LibDiamond.enforceIsSelf();
+        LibFacetGuard.enforceFacetValidation();
         LibAppStorage.enforceRestrictionsInitialize();
 
         if (_restrictions.length == 0) {
@@ -63,6 +65,7 @@ contract RestrictionsFacet is IRestrictionsFacet, ReentrancyGuard {
         returns (uint256 uninitSuccess)
     {
         LibDiamond.enforceIsSelf();
+        LibFacetGuard.enforceFacetValidation();
         LibAppStorage.setRestrictionsUninitialized();
         RestrictionsStorage storage restrictionsStorage = LibFacetStorage
             .restrictionsStorage();
@@ -93,6 +96,8 @@ contract RestrictionsFacet is IRestrictionsFacet, ReentrancyGuard {
      */
     function addRestriction(address _restriction) external override {
         LibDiamond.enforceIsSelf();
+        LibFacetGuard.enforceFacetValidation();
+
         if (LibDiamond.restrictionsFacet() == address(0)) {
             revert RestrictionsFacet__ZeroAddressRestrictionsFacet();
         }
@@ -117,6 +122,8 @@ contract RestrictionsFacet is IRestrictionsFacet, ReentrancyGuard {
      */
     function removeRestriction(address _restriction) external override {
         LibDiamond.enforceIsSelf();
+        LibFacetGuard.enforceFacetValidation();
+
         RestrictionsStorage storage restrictionsStorage = LibFacetStorage
             .restrictionsStorage();
 

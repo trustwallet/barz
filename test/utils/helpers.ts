@@ -2,6 +2,7 @@ import { ethers } from 'hardhat'
 import { FacetRegistry } from '../../typechain-types'
 import elliptic from 'elliptic'
 import { keccak256 } from '@ethersproject/keccak256'
+import { ENTRYPOINT_V6 } from './testutils'
 
 const {
     getSelectors,
@@ -127,4 +128,8 @@ export const isUserOperationSuccessful = async (tx: any) => {
     const receipt = await tx.wait()
     const event = receipt.events?.filter((e:any) => e.event === "UserOperationEvent")[0];
     return event?.args?.success
+}
+
+export const getMockEntryPoint = async () => {
+    return await ethers.getImpersonatedSigner(ENTRYPOINT_V6)
 }

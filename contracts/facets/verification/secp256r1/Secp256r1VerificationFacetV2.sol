@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-pragma solidity 0.8.21;
+pragma solidity 0.8.26;
 
 import {UserOperation} from "../../../aa-4337/interfaces/UserOperation.sol";
 import {LibAppStorage} from "../../../libraries/LibAppStorage.sol";
@@ -15,7 +15,6 @@ import {IVerificationFacet} from "../../interfaces/IVerificationFacet.sol";
  * @title Secp256r1 verification facet V2
  * @dev Facet to verify Secp256r1 signature. Uses RIP 7212 precompile if exists, fallback to verification library if not.
  * @author David Yongjun Kim (@Powerstream3604)
- * NOTE: This Facet hasn't been audited yet and it's planning to be audited soon.
  */
 contract Secp256r1VerificationFacetV2 is IVerificationFacet, IERC1271 {
     error Secp256r1VerificationFacet__InvalidSignerLength();
@@ -179,7 +178,7 @@ contract Secp256r1VerificationFacetV2 is IVerificationFacet, IERC1271 {
      */
     function isValidSignature(
         bytes32 _hash,
-        bytes memory _signature
+        bytes calldata _signature
     ) public view override returns (bytes4 magicValue) {
         bytes32 messageData = LibVerification.getMessageHash(_hash);
         magicValue = _validateSignature(
@@ -194,7 +193,7 @@ contract Secp256r1VerificationFacetV2 is IVerificationFacet, IERC1271 {
     function _validateSignature(
         uint256[2] memory q,
         bytes32 _hash,
-        bytes memory _signature
+        bytes calldata _signature
     ) internal view returns (bool) {
         (
             uint256 rValue,

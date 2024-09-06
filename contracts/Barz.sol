@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-pragma solidity 0.8.21;
+pragma solidity 0.8.26;
 
 import {LibDiamond} from "./libraries/LibDiamond.sol";
 import {IBarz} from "./interfaces/IBarz.sol";

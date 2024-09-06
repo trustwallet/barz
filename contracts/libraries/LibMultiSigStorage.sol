@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-pragma solidity 0.8.21;
+pragma solidity 0.8.26;
 
 /**
  * @title Multi-sig Storage
@@ -16,14 +16,15 @@ struct MultiSigStorage {
 }
 
 library LibMultiSigStorage {
+    bytes32 private constant MULTISIG_STORAGE_POSITION =
+        keccak256("v0.trustwallet.diamond.storage.MultiSigStorage");
+
     function multisigStorage()
         internal
         pure
         returns (MultiSigStorage storage ds)
     {
-        bytes32 storagePosition = keccak256(
-            "v0.trustwallet.diamond.storage.MultiSigStorage"
-        );
+        bytes32 storagePosition = MULTISIG_STORAGE_POSITION;
         assembly {
             ds.slot := storagePosition
         }

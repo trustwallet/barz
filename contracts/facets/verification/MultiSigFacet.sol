@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: Apache-2.0
-pragma solidity 0.8.21;
+pragma solidity 0.8.26;
 
 import {ECDSA} from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import {SignatureChecker} from "@openzeppelin/contracts/utils/cryptography/SignatureChecker.sol";
 import {UserOperation} from "../../aa-4337/interfaces/UserOperation.sol";
 import {LibDiamond} from "../../libraries/LibDiamond.sol";
+import {LibFacetGuard} from "../../libraries/LibFacetGuard.sol";
 import {LibLoupe} from "../../libraries/LibLoupe.sol";
 import {LibAppStorage} from "../../libraries/LibAppStorage.sol";
 import {LibVerification} from "../../libraries/LibVerification.sol";
@@ -19,7 +20,6 @@ import {IMultiSigFacet} from "../interfaces/IMultiSigFacet.sol";
  *      Wallet that adds this facet becomes a multi-sig wallet.
  *      Reference signature_format.md documentation for Multi-sig facet details
  * @author David Yongjun Kim (@Powerstream3604)
- * NOTE: This Facet hasn't been audited yet and it's planning to be audited soon.
  */
 contract MultiSigFacet is IMultiSigFacet, IVerificationFacet, IERC1271 {
     using ECDSA for bytes32;
@@ -54,21 +54,15 @@ contract MultiSigFacet is IMultiSigFacet, IVerificationFacet, IERC1271 {
     ) public override returns (uint256 initSuccess) {
         LibAppStorage.enforceSignerInitialize();
 
-        if (!isValidKeyType(_owners)) {
-            revert MultiSigFacet__InvalidInitData();
-        }
+        if (!isValidKeyType(_owners)) revert MultiSigFacet__InvalidInitData();
 
         MultiSigStorage storage ms = LibMultiSigStorage.multisigStorage();
 
         uint256 threshold = uint256(uint32(bytes4(_owners)));
         uint256 ownerCount = (_owners.length - THRESHOLD) / ADDRESS;
 
-        if (threshold == 0) {
-            revert MultiSigFacet__InvalidThreshold();
-        }
-        if (ownerCount == 0) {
-            revert MultisigFacet__InvalidOwnerCount();
-        }
+        if (threshold == 0) revert MultiSigFacet__InvalidThreshold();
+        if (ownerCount == 0) revert MultisigFacet__InvalidOwnerCount();
 
         address currentOwner = SENTINEL_OWNERS;
         uint256 ptr = THRESHOLD;
@@ -81,12 +75,9 @@ contract MultiSigFacet is IMultiSigFacet, IVerificationFacet, IERC1271 {
                 owner_ == SENTINEL_OWNERS ||
                 owner_ == address(this) ||
                 owner_ == currentOwner
-            ) {
-                revert MultiSigFacet__InvalidOwnerAddress();
-            }
-            if (ms.owners[owner_] != address(0)) {
+            ) revert MultiSigFacet__InvalidOwnerAddress();
+            if (ms.owners[owner_] != address(0))
                 revert MultiSigFacet__DuplicateOwner();
-            }
 
             ms.owners[currentOwner] = owner_;
             currentOwner = owner_;
@@ -101,12 +92,10 @@ contract MultiSigFacet is IMultiSigFacet, IVerificationFacet, IERC1271 {
 
         bytes4 validateSelector = validateOwnerSignatureSelector();
 
-        if (LibAppStorage.getValidateOwnerSignatureSelector() != bytes4(0)) {
+        if (LibAppStorage.getValidateOwnerSignatureSelector() != bytes4(0))
             revert VerificationFacet__ValidateOwnerSignatureSelectorAlreadySet();
-        }
-        if (LibLoupe.facetAddress(validateSelector) != self) {
+        if (LibLoupe.facetAddress(validateSelector) != self)
             revert VerificationFacet__InvalidFacetMapping();
-        }
 
         // initialize verification function selector
         LibAppStorage.setValidateOwnerSignatureSelector(validateSelector);
@@ -225,9 +214,7 @@ contract MultiSigFacet is IMultiSigFacet, IVerificationFacet, IERC1271 {
         if (
             publicKeyLength < ADDRESS + THRESHOLD ||
             (publicKeyLength - THRESHOLD) % ADDRESS != 0
-        ) {
-            return false;
-        }
+        ) return false;
 
         uint256 threshold = uint256(uint32(bytes4(_publicKey)));
         uint256 ownerCount = (publicKeyLength - THRESHOLD) / ADDRESS;
@@ -283,9 +270,7 @@ contract MultiSigFacet is IMultiSigFacet, IVerificationFacet, IERC1271 {
                 signatureType,
                 nextOffset
             ) = splitSignatures(_signatures, nextOffset);
-            if (nextOffset == 0 && i + 1 < _threshold) {
-                return INVALID_SIG;
-            }
+            if (nextOffset == 0 && i + 1 < _threshold) return INVALID_SIG;
             if (signatureType == 1) {
                 // If signatureType is 1 then it is default dataHash signed.
                 // This also includes the contract signature
@@ -300,7 +285,9 @@ contract MultiSigFacet is IMultiSigFacet, IVerificationFacet, IERC1271 {
                 }
             } else if (signatureType == 2) {
                 // If signatureType is 2 then it is an approved hash
-                if (ms.approvedHashes[ms.counter][currentOwner][_dataHash] == 0) {
+                if (
+                    ms.approvedHashes[ms.counter][currentOwner][_dataHash] == 0
+                ) {
                     return INVALID_SIG;
                 }
             } else if (signatureType == 3) {
@@ -415,6 +402,7 @@ contract MultiSigFacet is IMultiSigFacet, IVerificationFacet, IERC1271 {
      */
     function addOwner(address _newOwner, uint256 _threshold) external {
         LibDiamond.enforceIsSelf();
+        LibFacetGuard.enforceFacetValidation();
 
         MultiSigStorage storage ms = LibMultiSigStorage.multisigStorage();
 
@@ -452,6 +440,7 @@ contract MultiSigFacet is IMultiSigFacet, IVerificationFacet, IERC1271 {
         uint256 _threshold
     ) external {
         LibDiamond.enforceIsSelf();
+        LibFacetGuard.enforceFacetValidation();
 
         MultiSigStorage storage ms = LibMultiSigStorage.multisigStorage();
 
@@ -488,6 +477,7 @@ contract MultiSigFacet is IMultiSigFacet, IVerificationFacet, IERC1271 {
         address _newOwner
     ) public {
         LibDiamond.enforceIsSelf();
+        LibFacetGuard.enforceFacetValidation();
 
         MultiSigStorage storage ms = LibMultiSigStorage.multisigStorage();
 
@@ -522,6 +512,7 @@ contract MultiSigFacet is IMultiSigFacet, IVerificationFacet, IERC1271 {
      */
     function changeThreshold(uint256 _threshold) public {
         LibDiamond.enforceIsSelf();
+        LibFacetGuard.enforceFacetValidation();
 
         MultiSigStorage storage ms = LibMultiSigStorage.multisigStorage();
 

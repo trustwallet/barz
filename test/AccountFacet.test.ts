@@ -340,7 +340,7 @@ describe('Account Facet', () => {
                 expect(count).to.equal(0)
 
                 const callData = executeCallData(testCounter.address, 0, incrementCall)
-                await expect(callFromEntryPointOnR1(entryPoint, barz.address, owner, callData)).to.emit(entryPoint, "UserOperationEvent")
+                await expect(callFromEntryPointOnR1(entryPoint, barz.address, owner, callData, await accountBarz.getNonce())).to.emit(entryPoint, "UserOperationEvent")
 
                 const updatedCount = await testCounter.getCount()
                 expect(updatedCount).to.equal(1)
@@ -388,6 +388,7 @@ describe('Account Facet', () => {
                 await diamondCutBarz.connect(guardian).approveDiamondCut(lockCut)
 
                 const callData = executeBatchCallData([testCounter.address, testToken.address, accountBarz.address], [value, value, value], [incrementCall, mintCall, approveDiamondCutCall])
+                
                 await expect(callFromEntryPointOnR1(entryPoint, barz.address, owner, callData)).to.emit(diamondCutBarz, "DiamondCut")
 
                 // State Before Multi-call

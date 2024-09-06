@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
-pragma solidity 0.8.21;
+pragma solidity 0.8.26;
 
 import {LibDiamond} from "../../libraries/LibDiamond.sol";
+import {LibFacetGuard} from "../../libraries/LibFacetGuard.sol";
 import {LibGuardian} from "../../libraries/LibGuardian.sol";
 import {ISecurityManager} from "../../infrastructure/interfaces/ISecurityManager.sol";
 import {SignatureChecker} from "@openzeppelin/contracts/utils/cryptography/SignatureChecker.sol";
@@ -36,6 +37,8 @@ contract DiamondCutFacet is Modifiers, IDiamondCut {
         bool _flag
     ) external override onlyWhenUnlocked {
         LibDiamond.enforceIsSelf();
+        LibFacetGuard.enforceFacetValidation();
+
         LibDiamond.diamondStorage().supportedInterfaces[_interfaceId] = _flag;
         emit SupportsInterfaceUpdated(_interfaceId, _flag);
     }
@@ -52,6 +55,7 @@ contract DiamondCutFacet is Modifiers, IDiamondCut {
         bytes calldata
     ) external override onlyWhenUnlocked {
         LibDiamond.enforceIsSelf();
+        LibFacetGuard.enforceFacetValidation();
 
         _checkFacetCutValidity(_diamondCut);
         // require approval from guardian if guardian exists
@@ -62,6 +66,7 @@ contract DiamondCutFacet is Modifiers, IDiamondCut {
         unchecked {
             ++LibFacetStorage.diamondCutStorage().nonce;
         }
+
         LibDiamond.diamondCut(_diamondCut, address(0), "");
     }
 

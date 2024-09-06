@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-pragma solidity 0.8.21;
+pragma solidity 0.8.26;
 
 import {LibRecoverSpender} from "../libraries/LibRecoverSpender.sol";
 import {WhitelistStorage} from "../infrastructure/WhitelistStorage.sol";

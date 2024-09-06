@@ -3,7 +3,7 @@ import { Wallet } from 'ethers'
 
 import { AccountFacet, DiamondCutFacet, Barz, SignatureMigrationFacet, Secp256k1VerificationFacet, Secp256r1VerificationFacet, SecurityManager, FacetRegistry, DiamondLoupeFacet, GuardianFacet, TokenReceiverFacet, DefaultFallbackHandler, MultiSigFacet } from '../typechain-types'
 import { fillUserOpDefaults, signMsgOnR1Curve, getUserOpHash, signUserOpK1Curve, signUserOpR1Curve, executeCallData, callFromEntryPointOnK1, callFromEntryPointOnR1 } from './utils/UserOp'
-import { getEthSignMessageHash, getBlockTimestamp, getChainId, diamondCut, guardianSecurityPeriod, approvalValidationPeriod, migrationPeriod, increaseBlockTime, generateKeyPair } from './utils/helpers'
+import { getEthSignMessageHash, getBlockTimestamp, getChainId, diamondCut, guardianSecurityPeriod, approvalValidationPeriod, migrationPeriod, increaseBlockTime, generateKeyPair, getMockEntryPoint } from './utils/helpers'
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 import { createAccountOwner, fund, callGasLimit, verificationGasLimit, maxFeePerGas, AddressZero, getMessageHash, removePrefix, sortSignatures } from './utils/testutils'
 
@@ -73,10 +73,12 @@ describe('Signature Migration Facet', () => {
     let encodedFuncSelectorsHash: any
 
     before(async () => {
-        [user1, mockEntryPoint, guardian2, guardian3, securityManagerOwner, facetRegistryOwner] = await ethers.getSigners()
+        [user1, guardian2, guardian3, securityManagerOwner, facetRegistryOwner] = await ethers.getSigners()
+        mockEntryPoint = await getMockEntryPoint()
         owner = createAccountOwner(ownerSeed++)
         guardian1 = createAccountOwner(ownerSeed++)
         subOwner = createAccountOwner(ownerSeed++)
+        await fund(mockEntryPoint.address)
         await fund(owner.address)
         await fund(guardian1.address)
 
@@ -98,7 +100,6 @@ describe('Signature Migration Facet', () => {
 
         migrationFacetSelectors = getSelectors(migrationFacet).filter((item: string) => item !== migrationFacet.interface.getSighash('securityManager'))
         guardianFacetSelectors = getSelectors(guardianFacet).filter((item: string) => item !== guardianFacet.interface.getSighash('securityManager'))
-
 
         await facetRegistry.connect(facetRegistryOwner).registerFacetFunctionSelectors(accountFacet.address, getSelectors(accountFacet))
         await facetRegistry.connect(facetRegistryOwner).registerFacetFunctionSelectors(diamondCutFacet.address, getSelectors(diamondCutFacet))

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-pragma solidity 0.8.21;
+pragma solidity 0.8.26;
 
 import {UserOperation} from "../../aa-4337/interfaces/UserOperation.sol";
 
