@@ -17,7 +17,7 @@ import {IValidator} from "./interfaces/IValidator.sol";
 import {IModule} from "./interfaces/IModule.sol";
 import {IHook} from "./interfaces/IHook.sol";
 import {IMMSAFacet} from "./interfaces/IMMSAFacet.sol";
-import {RegistryAdapter} from "./utils/RegistryAdapter.sol";
+import {RegistryAdapter, IERC7484} from "./utils/RegistryAdapter.sol";
 
 /**
  * @title MMSA(Minimal Modular Smart Account) Facet
@@ -66,8 +66,17 @@ contract MMSAFacet is
         }
     }
 
-    function initMMSA() external onlyEntryPointOrSelf {
+    function initMMSA(
+        address registry,
+        address[] calldata attesters,
+        uint8 threshold
+    ) external onlyEntryPointOrSelf {
         _initialize();
+        _configureRegistry({
+            registry: IERC7484(registry),
+            attesters: attesters,
+            threshold: threshold
+        });
     }
 
     function validateUserOp(

@@ -67,7 +67,15 @@ contract V2MigrationFacet is BarzStorage {
         });
 
         IDiamondCut(address(this)).diamondCut(cut, address(0), "");
-        IMMSAFacet(address(this)).initMMSA();
+
+        address[] memory attesters = new address[](2);
+        attesters[0] = 0x0000000000000000000000000000000000000000; // Todo: Trust attester
+        attesters[1] = 0x000000333034E9f539ce08819E12c1b8Cb29084d; // Rhinestone attester
+        IMMSAFacet(address(this)).initMMSA({
+            registry: address(0x000000000069E2a187AEFFb852bF3cCdC95151B2),
+            attesters: attesters,
+            threshold: 1
+        });
 
         emit V2MigrationComplete();
     }
