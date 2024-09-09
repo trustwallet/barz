@@ -19,7 +19,11 @@ interface IMMSAFacet {
     event ModuleInstalled(uint256 moduleTypeId, address module);
     event ModuleUninstalled(uint256 moduleTypeId, address module);
 
-    function initMMSA() external;
+    function initMMSA(
+        address registry,
+        address[] memory attesters,
+        uint8 threshold
+    ) external;
 
     function installModule(
         uint256 moduleTypeId,
