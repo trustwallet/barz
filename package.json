@@ -63,11 +63,11 @@
     "@openzeppelin/contracts": "^4.9.6",
     "@peculiar/asn1-ecc": "^2.3.6",
     "@peculiar/asn1-schema": "^2.3.6",
-    "@types/elliptic": "^6.4.14",
+    "@types/elliptic": "^6.4.18",
     "base64url": "^3.0.1",
     "cbor": "^9.0.0",
     "ecdsa": "^0.7.0",
-    "elliptic": "^6.5.4",
+    "elliptic": "^6.6.1",
     "web3-utils": "^4.2.1"
   }
 }
